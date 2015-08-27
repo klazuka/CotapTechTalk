@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		535BA1EB1B8A40D400F6F386 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA1EA1B8A40D400F6F386 /* AppDelegate.swift */; };
-		535BA1ED1B8A40D400F6F386 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA1EC1B8A40D400F6F386 /* ViewController.swift */; };
-		535BA1F01B8A40D400F6F386 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 535BA1EE1B8A40D400F6F386 /* Main.storyboard */; };
+		535BA1ED1B8A40D400F6F386 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA1EC1B8A40D400F6F386 /* MainVC.swift */; };
 		535BA1F21B8A40D400F6F386 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 535BA1F11B8A40D400F6F386 /* Assets.xcassets */; };
 		535BA1F51B8A40D400F6F386 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 535BA1F31B8A40D400F6F386 /* LaunchScreen.storyboard */; };
+		535BA1FD1B8A433E00F6F386 /* RadiusTransmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA1FC1B8A433E00F6F386 /* RadiusTransmitter.swift */; };
+		535BA1FF1B8A50DE00F6F386 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA1FE1B8A50DE00F6F386 /* Utility.swift */; };
+		535BA2011B8A5B0D00F6F386 /* BasicAudioTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA2001B8A5B0D00F6F386 /* BasicAudioTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		535BA1E71B8A40D400F6F386 /* Radius.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Radius.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		535BA1EA1B8A40D400F6F386 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		535BA1EC1B8A40D400F6F386 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		535BA1EF1B8A40D400F6F386 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		535BA1EC1B8A40D400F6F386 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		535BA1F11B8A40D400F6F386 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		535BA1F41B8A40D400F6F386 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		535BA1F61B8A40D400F6F386 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		535BA1FC1B8A433E00F6F386 /* RadiusTransmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadiusTransmitter.swift; sourceTree = "<group>"; };
+		535BA1FE1B8A50DE00F6F386 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		535BA2001B8A5B0D00F6F386 /* BasicAudioTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicAudioTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +59,10 @@
 			isa = PBXGroup;
 			children = (
 				535BA1EA1B8A40D400F6F386 /* AppDelegate.swift */,
-				535BA1EC1B8A40D400F6F386 /* ViewController.swift */,
-				535BA1EE1B8A40D400F6F386 /* Main.storyboard */,
+				535BA1EC1B8A40D400F6F386 /* MainVC.swift */,
+				535BA1FC1B8A433E00F6F386 /* RadiusTransmitter.swift */,
+				535BA2001B8A5B0D00F6F386 /* BasicAudioTest.swift */,
+				535BA1FE1B8A50DE00F6F386 /* Utility.swift */,
 				535BA1F11B8A40D400F6F386 /* Assets.xcassets */,
 				535BA1F31B8A40D400F6F386 /* LaunchScreen.storyboard */,
 				535BA1F61B8A40D400F6F386 /* Info.plist */,
@@ -123,7 +129,6 @@
 			files = (
 				535BA1F51B8A40D400F6F386 /* LaunchScreen.storyboard in Resources */,
 				535BA1F21B8A40D400F6F386 /* Assets.xcassets in Resources */,
-				535BA1F01B8A40D400F6F386 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,22 +139,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				535BA1ED1B8A40D400F6F386 /* ViewController.swift in Sources */,
+				535BA1FF1B8A50DE00F6F386 /* Utility.swift in Sources */,
+				535BA1ED1B8A40D400F6F386 /* MainVC.swift in Sources */,
+				535BA1FD1B8A433E00F6F386 /* RadiusTransmitter.swift in Sources */,
 				535BA1EB1B8A40D400F6F386 /* AppDelegate.swift in Sources */,
+				535BA2011B8A5B0D00F6F386 /* BasicAudioTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		535BA1EE1B8A40D400F6F386 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				535BA1EF1B8A40D400F6F386 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		535BA1F31B8A40D400F6F386 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
