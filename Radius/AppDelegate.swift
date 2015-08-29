@@ -1,5 +1,5 @@
 //
-//  Copyright © 2015 Microsoft. All rights reserved.
+//  Copyright © 2015 Circle 38. All rights reserved.
 //
 
 import UIKit

@@ -1,13 +1,13 @@
 //
-//  Copyright © 2015 Microsoft. All rights reserved.
+//  Copyright © 2015 Circle 38. All rights reserved.
 //
 
 import Foundation
 import AVFoundation
 
-let sampleRate = 48000.0
+private let sampleRate = 48000.0
 
-class RadiusTransmitter {
+class Transmitter {
   let engine: AVAudioEngine
   let toneGen: AVAudioPlayerNode
   let audioFormat: AVAudioFormat

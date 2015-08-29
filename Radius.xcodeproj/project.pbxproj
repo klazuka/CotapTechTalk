@@ -11,10 +11,11 @@
 		535BA1ED1B8A40D400F6F386 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA1EC1B8A40D400F6F386 /* MainVC.swift */; };
 		535BA1F21B8A40D400F6F386 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 535BA1F11B8A40D400F6F386 /* Assets.xcassets */; };
 		535BA1F51B8A40D400F6F386 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 535BA1F31B8A40D400F6F386 /* LaunchScreen.storyboard */; };
-		535BA1FD1B8A433E00F6F386 /* RadiusTransmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA1FC1B8A433E00F6F386 /* RadiusTransmitter.swift */; };
+		535BA1FD1B8A433E00F6F386 /* Transmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA1FC1B8A433E00F6F386 /* Transmitter.swift */; };
 		535BA1FF1B8A50DE00F6F386 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA1FE1B8A50DE00F6F386 /* Utility.swift */; };
 		535BA2011B8A5B0D00F6F386 /* BasicAudioTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA2001B8A5B0D00F6F386 /* BasicAudioTest.swift */; };
 		53D3C15D1B925B4600A6C211 /* FMSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3C15C1B925B4600A6C211 /* FMSynthesizer.swift */; settings = {ASSET_TAGS = (); }; };
+		53D3C1601B927ADD00A6C211 /* Receiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3C15F1B927ADD00A6C211 /* Receiver.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,10 +25,11 @@
 		535BA1F11B8A40D400F6F386 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		535BA1F41B8A40D400F6F386 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		535BA1F61B8A40D400F6F386 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		535BA1FC1B8A433E00F6F386 /* RadiusTransmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadiusTransmitter.swift; sourceTree = "<group>"; };
+		535BA1FC1B8A433E00F6F386 /* Transmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transmitter.swift; sourceTree = "<group>"; };
 		535BA1FE1B8A50DE00F6F386 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		535BA2001B8A5B0D00F6F386 /* BasicAudioTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicAudioTest.swift; sourceTree = "<group>"; };
 		53D3C15C1B925B4600A6C211 /* FMSynthesizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMSynthesizer.swift; sourceTree = "<group>"; };
+		53D3C15F1B927ADD00A6C211 /* Receiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Receiver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +65,8 @@
 				535BA1EA1B8A40D400F6F386 /* AppDelegate.swift */,
 				535BA1EC1B8A40D400F6F386 /* MainVC.swift */,
 				53D3C15C1B925B4600A6C211 /* FMSynthesizer.swift */,
-				535BA1FC1B8A433E00F6F386 /* RadiusTransmitter.swift */,
+				535BA1FC1B8A433E00F6F386 /* Transmitter.swift */,
+				53D3C15F1B927ADD00A6C211 /* Receiver.swift */,
 				535BA2001B8A5B0D00F6F386 /* BasicAudioTest.swift */,
 				535BA1FE1B8A50DE00F6F386 /* Utility.swift */,
 				535BA1F11B8A40D400F6F386 /* Assets.xcassets */,
@@ -143,8 +146,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				535BA1FF1B8A50DE00F6F386 /* Utility.swift in Sources */,
+				53D3C1601B927ADD00A6C211 /* Receiver.swift in Sources */,
 				535BA1ED1B8A40D400F6F386 /* MainVC.swift in Sources */,
-				535BA1FD1B8A433E00F6F386 /* RadiusTransmitter.swift in Sources */,
+				535BA1FD1B8A433E00F6F386 /* Transmitter.swift in Sources */,
 				535BA1EB1B8A40D400F6F386 /* AppDelegate.swift in Sources */,
 				535BA2011B8A5B0D00F6F386 /* BasicAudioTest.swift in Sources */,
 				53D3C15D1B925B4600A6C211 /* FMSynthesizer.swift in Sources */,
@@ -254,7 +258,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Radius/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.Radius;
+				PRODUCT_BUNDLE_IDENTIFIER = com.circle38.RadiusDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -265,7 +269,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Radius/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.Radius;
+				PRODUCT_BUNDLE_IDENTIFIER = com.circle38.RadiusDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
