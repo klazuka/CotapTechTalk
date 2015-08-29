@@ -36,10 +36,12 @@ class RadiusTransmitter {
     
     let bufferRaw = pcmBuffer.floatChannelData[0]
     let numFrames = Int(pcmBuffer.frameCapacity)
+    let x = 2.0 * Float(M_PI) / Float(sampleRate)
     for i in 0..<numFrames {
-      let val = sinf(Float(toneHz) * Float(i) * 2 * Float(M_PI) / Float(sampleRate))
+      let val = sinf(Float(toneHz) * Float(i) * x)
       bufferRaw[i] = val
     }
+    pcmBuffer.frameLength = AVAudioFrameCount(numFrames)
     
     toneGen.scheduleBuffer(pcmBuffer, atTime: nil, options: []) {
       print("buffer finished playing")

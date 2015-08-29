@@ -5,9 +5,9 @@
 import UIKit
 import AVFoundation
 
-//let tx = RadiusTransmitter()
-
 class MainVC: UIViewController {
+  
+  let tx = RadiusTransmitter()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -21,8 +21,8 @@ class MainVC: UIViewController {
       print("audioSession setCategory error: \(error)")
     }
     
-//    tx.start()
-    FMSynthesizer.start()
+    tx.start()
+//    FMSynthesizer.start()
   }
 }
 
