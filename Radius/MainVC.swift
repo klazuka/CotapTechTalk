@@ -3,18 +3,26 @@
 //
 
 import UIKit
+import AVFoundation
+
+//let tx = RadiusTransmitter()
 
 class MainVC: UIViewController {
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    view.backgroundColor = UIColor.lightGrayColor()
+    view.backgroundColor = .lightGrayColor()
     
-//    let tx = RadiusTransmitter()
-        let tx = BasicAudioTest()
+    do {
+      try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+      print("set audio session category")
+    } catch let error as NSError {
+      print("audioSession setCategory error: \(error)")
+    }
     
-    tx.start()
+//    tx.start()
+    FMSynthesizer.start()
   }
 }
 

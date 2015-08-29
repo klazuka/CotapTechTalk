@@ -14,6 +14,7 @@
 		535BA1FD1B8A433E00F6F386 /* RadiusTransmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA1FC1B8A433E00F6F386 /* RadiusTransmitter.swift */; };
 		535BA1FF1B8A50DE00F6F386 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA1FE1B8A50DE00F6F386 /* Utility.swift */; };
 		535BA2011B8A5B0D00F6F386 /* BasicAudioTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA2001B8A5B0D00F6F386 /* BasicAudioTest.swift */; };
+		53D3C15D1B925B4600A6C211 /* FMSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3C15C1B925B4600A6C211 /* FMSynthesizer.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		535BA1FC1B8A433E00F6F386 /* RadiusTransmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadiusTransmitter.swift; sourceTree = "<group>"; };
 		535BA1FE1B8A50DE00F6F386 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		535BA2001B8A5B0D00F6F386 /* BasicAudioTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicAudioTest.swift; sourceTree = "<group>"; };
+		53D3C15C1B925B4600A6C211 /* FMSynthesizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMSynthesizer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			children = (
 				535BA1EA1B8A40D400F6F386 /* AppDelegate.swift */,
 				535BA1EC1B8A40D400F6F386 /* MainVC.swift */,
+				53D3C15C1B925B4600A6C211 /* FMSynthesizer.swift */,
 				535BA1FC1B8A433E00F6F386 /* RadiusTransmitter.swift */,
 				535BA2001B8A5B0D00F6F386 /* BasicAudioTest.swift */,
 				535BA1FE1B8A50DE00F6F386 /* Utility.swift */,
@@ -144,6 +147,7 @@
 				535BA1FD1B8A433E00F6F386 /* RadiusTransmitter.swift in Sources */,
 				535BA1EB1B8A40D400F6F386 /* AppDelegate.swift in Sources */,
 				535BA2011B8A5B0D00F6F386 /* BasicAudioTest.swift in Sources */,
+				53D3C15D1B925B4600A6C211 /* FMSynthesizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +289,7 @@
 				535BA1FB1B8A40D400F6F386 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

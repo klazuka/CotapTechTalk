@@ -14,20 +14,6 @@ class BasicAudioTest {
   
   func start() {
     
-    do {
-      try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord)
-    } catch let error as NSError {
-      print("audioSession setCategory error: \(error)")
-    }
-    
-    let ioBufferDuration = 128.0 / 44100.0
-    
-    do {
-      try AVAudioSession.sharedInstance().setPreferredIOBufferDuration(ioBufferDuration)
-    } catch let error as NSError {
-      print("audioSession setup error: \(error)")
-    }
-    
     // Setup engine and node instances
     let input = engine.inputNode
 
