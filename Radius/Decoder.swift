@@ -5,16 +5,14 @@
 import Foundation
 import Accelerate
 
-// we will be transmitting a 16-bit token
-typealias Token = UInt16
-private let numTones = 16 // one tone per bit used to represent a token
-
+// one tone per bit used to represent a token
+private let numTones = Token.numBits
 
 // derived constants
 private let startBin = hertz2bin(Float(baseFreq))
 private let freqSpacing = bin2hertz(startBin + binStride) - bin2hertz(startBin)
 private let lastBin = startBin + (numTones * binStride)
-private let signalBins = startBin.stride(to: lastBin, by: binStride)
+private let toneBins = startBin.stride(to: lastBin, by: binStride)
 
 
 typealias FloatBuffer = UnsafeMutablePointer<Float>
@@ -25,7 +23,7 @@ func doTest() {
   // generate a test signal
   let inputSamples = FloatBuffer.alloc(fftLength)
   vDSP_vclr(inputSamples, 1, vDSP_Length(fftLength)) // clear to zero
-  encode(0b0110011001100110, buffer: inputSamples, numSamples: fftLength)
+  encode(Token(value: 0b0110011001100110), buffer: inputSamples, numSamples: fftLength)
   
   // de-interleave to get the audio input into the format that vDSP wants
   let evenSamples = FloatBuffer.alloc(fftLength/2)
@@ -56,6 +54,30 @@ func doTest() {
   freqMagnitudes.dealloc(fftLength/2)
 }
 
+private func encode(token: Token, buffer: FloatBuffer, numSamples: Int) {
+  print("Encoding signal for Token \(token)")
+  
+  // generate a tone for each bit that is turned on
+  for (i, bit) in token.bigEndianBits.enumerate() where bit == .One {
+    let freq = baseFreq + (Float(i) * freqSpacing)
+    print("set tone \(freq)")
+    tone(Float(freq), buffer: buffer, numSamples: numSamples)
+  }
+}
+
+private func decode(magnitudes: FloatBuffer, numMagnitudes: Int) -> Token {
+    
+  var bits = [Bit]()
+  for bin in toneBins {
+    let magnitude = magnitudes[bin]
+    print(String(format: "%4d %5.0f %.0f", bin, bin2hertz(bin), magnitude))
+    let isOn = magnitude > 200_000
+    bits.append(isOn ? .One : .Zero)
+  }
+  
+  return Token(bigEndianBits: bits)
+}
+
 private func printFrequencyAnalysis(magnitudes: FloatBuffer, numMagnitudes: Int) {
   print(" bin  freq magnitude")
   print(" ---  ---- ---------")
@@ -66,37 +88,11 @@ private func printFrequencyAnalysis(magnitudes: FloatBuffer, numMagnitudes: Int)
   }
 }
 
-private func decode(magnitudes: FloatBuffer, numMagnitudes: Int) -> UInt16 {
-  
-  print("start bin \(startBin)", magnitudes[startBin])
-  print("last bin \(lastBin)", magnitudes[lastBin])
-  
-  var bits = [Bit]()
-  for bin in signalBins {
-    let magnitude = magnitudes[bin]
-    print(String(format: "%4d %5.0f %.0f", bin, bin2hertz(bin), magnitude))
-    let isOn = magnitude > 100_000
-    bits.append(isOn ? .One : .Zero)
-  }
-  
-  let token = bits2token(bits)
-  return token
-}
-
 private func deinterleave(input: UnsafePointer<Float>, inputLength: Int, outputLeft: FloatBuffer, outputRight: FloatBuffer) {
   
   // de-interleave the real samples by abusing vDSP's complex-number deinterleave function
   var out = DSPSplitComplex(realp: outputLeft, imagp: outputRight)
   vDSP_ctoz(UnsafePointer<DSPComplex>(input), 2, &out, 1, vDSP_Length(inputLength/2))
-}
-
-private func encode(token: UInt16, buffer: FloatBuffer, numSamples: Int) {
-  // generate a tone for each bit that is turned on
-  for (i, bit) in token2bits(token).enumerate() where bit == .One {
-    let freq = baseFreq + (Float(i) * freqSpacing)
-    print("set tone \(freq)")
-    tone(Float(freq), buffer: buffer, numSamples: numSamples)
-  }
 }
 
 /// mixes a tone with frequency 'hz' into 'buffer'
@@ -121,24 +117,4 @@ private func hertz2bin(hertz: Float) -> Int {
   return Int(round(bin))
 }
 
-// TODO create a token type and make these methods on that type
 
-/// extract the bits in little-endian order
-private func token2bits(n: UInt16) -> [Bit] {
-  return
-    Array(0..<16)
-      .map { (n >> $0) & 0b1 }
-      .map { $0 == 1 ? Bit.One : Bit.Zero }
-}
-
-private func bits2token(bits: [Bit]) -> UInt16 {
-  assert(bits.count == 16)
-  var token = 0 as UInt16
-  for bit in bits {
-    if bit == .One {
-      token &= 1
-    }
-    token <<= 1
-  }
-  return token
-}
