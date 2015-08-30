@@ -8,7 +8,7 @@ import AVFoundation
 class MainVC: UIViewController {
   
 //  let system = Transmitter()
-  let system = Receiver()
+//  let system = Receiver()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -22,7 +22,9 @@ class MainVC: UIViewController {
       print("audioSession setCategory error: \(error)")
     }
     
-    system.start()
+    decode()
+    
+//    system.start()
 //    FMSynthesizer.start()
   }
 }

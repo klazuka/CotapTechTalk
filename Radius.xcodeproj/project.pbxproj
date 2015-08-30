@@ -14,6 +14,7 @@
 		535BA1FD1B8A433E00F6F386 /* Transmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA1FC1B8A433E00F6F386 /* Transmitter.swift */; };
 		535BA1FF1B8A50DE00F6F386 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA1FE1B8A50DE00F6F386 /* Utility.swift */; };
 		535BA2011B8A5B0D00F6F386 /* BasicAudioTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA2001B8A5B0D00F6F386 /* BasicAudioTest.swift */; };
+		5389F0CC1B928407002F392D /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5389F0CB1B928407002F392D /* Decoder.swift */; settings = {ASSET_TAGS = (); }; };
 		53D3C15D1B925B4600A6C211 /* FMSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3C15C1B925B4600A6C211 /* FMSynthesizer.swift */; settings = {ASSET_TAGS = (); }; };
 		53D3C1601B927ADD00A6C211 /* Receiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3C15F1B927ADD00A6C211 /* Receiver.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -28,6 +29,7 @@
 		535BA1FC1B8A433E00F6F386 /* Transmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transmitter.swift; sourceTree = "<group>"; };
 		535BA1FE1B8A50DE00F6F386 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		535BA2001B8A5B0D00F6F386 /* BasicAudioTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicAudioTest.swift; sourceTree = "<group>"; };
+		5389F0CB1B928407002F392D /* Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
 		53D3C15C1B925B4600A6C211 /* FMSynthesizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMSynthesizer.swift; sourceTree = "<group>"; };
 		53D3C15F1B927ADD00A6C211 /* Receiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Receiver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,6 +69,7 @@
 				53D3C15C1B925B4600A6C211 /* FMSynthesizer.swift */,
 				535BA1FC1B8A433E00F6F386 /* Transmitter.swift */,
 				53D3C15F1B927ADD00A6C211 /* Receiver.swift */,
+				5389F0CB1B928407002F392D /* Decoder.swift */,
 				535BA2001B8A5B0D00F6F386 /* BasicAudioTest.swift */,
 				535BA1FE1B8A50DE00F6F386 /* Utility.swift */,
 				535BA1F11B8A40D400F6F386 /* Assets.xcassets */,
@@ -151,6 +154,7 @@
 				535BA1FD1B8A433E00F6F386 /* Transmitter.swift in Sources */,
 				535BA1EB1B8A40D400F6F386 /* AppDelegate.swift in Sources */,
 				535BA2011B8A5B0D00F6F386 /* BasicAudioTest.swift in Sources */,
+				5389F0CC1B928407002F392D /* Decoder.swift in Sources */,
 				53D3C15D1B925B4600A6C211 /* FMSynthesizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
