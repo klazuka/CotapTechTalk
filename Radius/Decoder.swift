@@ -28,8 +28,12 @@ func decode() {
   vDSP_zvmags(&freqComplex, 1, freqMagnitudes, 1, vDSP_Length(fftLength/2))
   
   // print out the analysis
+  print(" bin  freq magnitude")
+  print(" ---  ---- ---------")
   for i in 0..<fftLength/2 {
-    print(i, freqMagnitudes[i])
+    let freq = bin2hertz(i, sampleRate: sampleRate, fftLength: fftLength)
+    let magnitude = freqMagnitudes[i]
+    print(String(format: "%4d %5.0f %.0f", i, freq, magnitude))
   }
   
   // free memory
@@ -58,4 +62,10 @@ private func tone(hz: Float, buffer: UnsafeMutablePointer<Float>, numSamples: In
   }
 }
 
+private func bin2hertz(bin: Int, sampleRate: Float, fftLength: Int) -> Float {
+  let nyquist = sampleRate / 2.0
+  let numBins = fftLength / 2
+  let binRatio = Float(bin) / Float(numBins)
+  return nyquist * binRatio
+}
 
