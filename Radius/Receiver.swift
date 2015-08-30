@@ -5,8 +5,6 @@
 import Foundation
 import AVFoundation
 
-private let sampleRate = 48000.0
-
 class Receiver {
   let engine: AVAudioEngine
   

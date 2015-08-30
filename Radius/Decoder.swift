@@ -5,12 +5,20 @@
 import Foundation
 import Accelerate
 
-private let sampleRate = 48_000.0 as Float
+// we will be transmitting a 16-bit token
+typealias Token = UInt16
+private let numTones = 16 // one tone per bit used to represent a token
+
+
+// derived constants
+private let startBin = hertz2bin(Float(baseFreq))
+private let freqSpacing = bin2hertz(startBin + binStride) - bin2hertz(startBin)
+private let lastBin = startBin + (numTones * binStride)
+
 
 typealias FloatBuffer = UnsafeMutablePointer<Float>
 
-func decode() {
-  let fftLength = 4096
+func doTest() {
   let setup = vDSP_DFT_zrop_CreateSetup(nil, vDSP_Length(fftLength), .FORWARD)
   
   // generate a test signal
@@ -28,19 +36,14 @@ func decode() {
   let outImaginary = FloatBuffer.alloc(fftLength/2)
   vDSP_DFT_Execute(setup, evenSamples, oddSamples, outReal, outImaginary)
   
-  // compute magnitudes for each frequency bin
+  // compute magnitudes for each frequency bin (convert from complex to real)
   var freqComplex = DSPSplitComplex(realp: outReal, imagp: outImaginary)
   let freqMagnitudes = FloatBuffer.alloc(fftLength/2)
   vDSP_zvmags(&freqComplex, 1, freqMagnitudes, 1, vDSP_Length(fftLength/2))
   
-  // print out the analysis
-  print(" bin  freq magnitude")
-  print(" ---  ---- ---------")
-  for i in 0..<fftLength/2 {
-    let freq = bin2hertz(i, sampleRate: sampleRate, fftLength: fftLength)
-    let magnitude = freqMagnitudes[i]
-    print(String(format: "%4d %5.0f %.0f", i, freq, magnitude))
-  }
+  // analyze
+  printFrequencyAnalysis(freqMagnitudes, numMagnitudes: fftLength/2)
+  print("decoded as", decode(freqMagnitudes, numMagnitudes: fftLength/2))
   
   // free memory
   vDSP_DFT_DestroySetup(setup)
@@ -50,6 +53,24 @@ func decode() {
   outReal.dealloc(fftLength/2)
   outImaginary.dealloc(fftLength/2)
   freqMagnitudes.dealloc(fftLength/2)
+}
+
+private func printFrequencyAnalysis(magnitudes: FloatBuffer, numMagnitudes: Int) {
+  print(" bin  freq magnitude")
+  print(" ---  ---- ---------")
+  for i in 0..<numMagnitudes {
+    let freq = bin2hertz(i)
+    let magnitude = magnitudes[i]
+    print(String(format: "%4d %5.0f %.0f", i, freq, magnitude))
+  }
+}
+
+private func decode(magnitudes: FloatBuffer, numMagnitudes: Int) -> UInt16 {
+  
+  print("start bin \(startBin)", magnitudes[startBin])
+  print("last bin \(lastBin)", magnitudes[lastBin])
+  
+  return 0
 }
 
 private func deinterleave(input: UnsafePointer<Float>, inputLength: Int, outputLeft: FloatBuffer, outputRight: FloatBuffer) {
@@ -71,10 +92,8 @@ private func encode(token: UInt16, buffer: FloatBuffer, numSamples: Int) {
 
   // generate a tone for each bit that is turned on
   for (i, bit) in bits(token).enumerate() where bit == .One {
-    let baseFreq = 400
-    let freqSpacing = 100
-    let freq = baseFreq + (i * freqSpacing)
-    print("tone \(freq)")
+    let freq = baseFreq + (Float(i) * freqSpacing)
+    print("set tone \(freq)")
     tone(Float(freq), buffer: buffer, numSamples: numSamples)
   }
 }
@@ -87,10 +106,17 @@ private func tone(hz: Float, buffer: FloatBuffer, numSamples: Int) {
   }
 }
 
-private func bin2hertz(bin: Int, sampleRate: Float, fftLength: Int) -> Float {
+private func bin2hertz(bin: Int) -> Float {
   let nyquist = sampleRate / 2.0
   let numBins = fftLength / 2
   let binRatio = Float(bin) / Float(numBins)
   return nyquist * binRatio
+}
+
+private func hertz2bin(hertz: Float) -> Int {
+  let nyquist = sampleRate / 2.0
+  let numBins = fftLength / 2
+  let bin = (hertz / nyquist) * Float(numBins)
+  return Int(round(bin))
 }
 

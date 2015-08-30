@@ -5,8 +5,6 @@
 import Foundation
 import AVFoundation
 
-private let sampleRate = 48000.0
-
 class Transmitter {
   let engine: AVAudioEngine
   let toneGen: AVAudioPlayerNode
@@ -17,7 +15,7 @@ class Transmitter {
     self.engine = AVAudioEngine()
     self.toneGen = AVAudioPlayerNode()
     
-    self.audioFormat = AVAudioFormat(standardFormatWithSampleRate: sampleRate, channels: 1)
+    self.audioFormat = AVAudioFormat(standardFormatWithSampleRate: Double(sampleRate), channels: 1)
     self.engine.attachNode(self.toneGen)
     self.engine.connect(self.toneGen, to: self.engine.outputNode, format: self.audioFormat)
   }
