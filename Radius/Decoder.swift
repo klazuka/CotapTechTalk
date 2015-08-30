@@ -14,6 +14,7 @@ private let numTones = 16 // one tone per bit used to represent a token
 private let startBin = hertz2bin(Float(baseFreq))
 private let freqSpacing = bin2hertz(startBin + binStride) - bin2hertz(startBin)
 private let lastBin = startBin + (numTones * binStride)
+private let signalBins = startBin.stride(to: lastBin, by: binStride)
 
 
 typealias FloatBuffer = UnsafeMutablePointer<Float>
@@ -42,7 +43,7 @@ func doTest() {
   vDSP_zvmags(&freqComplex, 1, freqMagnitudes, 1, vDSP_Length(fftLength/2))
   
   // analyze
-  printFrequencyAnalysis(freqMagnitudes, numMagnitudes: fftLength/2)
+//  printFrequencyAnalysis(freqMagnitudes, numMagnitudes: fftLength/2)
   print("decoded as", decode(freqMagnitudes, numMagnitudes: fftLength/2))
   
   // free memory
@@ -70,7 +71,16 @@ private func decode(magnitudes: FloatBuffer, numMagnitudes: Int) -> UInt16 {
   print("start bin \(startBin)", magnitudes[startBin])
   print("last bin \(lastBin)", magnitudes[lastBin])
   
-  return 0
+  var bits = [Bit]()
+  for bin in signalBins {
+    let magnitude = magnitudes[bin]
+    print(String(format: "%4d %5.0f %.0f", bin, bin2hertz(bin), magnitude))
+    let isOn = magnitude > 100_000
+    bits.append(isOn ? .One : .Zero)
+  }
+  
+  let token = bits2token(bits)
+  return token
 }
 
 private func deinterleave(input: UnsafePointer<Float>, inputLength: Int, outputLeft: FloatBuffer, outputRight: FloatBuffer) {
@@ -81,17 +91,8 @@ private func deinterleave(input: UnsafePointer<Float>, inputLength: Int, outputL
 }
 
 private func encode(token: UInt16, buffer: FloatBuffer, numSamples: Int) {
-
-  /// extract the bits in little-endian order
-  func bits(n: UInt16) -> [Bit] {
-    return
-      Array(0..<16)
-      .map { (n >> $0) & 0b1 }
-      .map { $0 == 1 ? Bit.One : Bit.Zero }
-  }
-
   // generate a tone for each bit that is turned on
-  for (i, bit) in bits(token).enumerate() where bit == .One {
+  for (i, bit) in token2bits(token).enumerate() where bit == .One {
     let freq = baseFreq + (Float(i) * freqSpacing)
     print("set tone \(freq)")
     tone(Float(freq), buffer: buffer, numSamples: numSamples)
@@ -120,3 +121,24 @@ private func hertz2bin(hertz: Float) -> Int {
   return Int(round(bin))
 }
 
+// TODO create a token type and make these methods on that type
+
+/// extract the bits in little-endian order
+private func token2bits(n: UInt16) -> [Bit] {
+  return
+    Array(0..<16)
+      .map { (n >> $0) & 0b1 }
+      .map { $0 == 1 ? Bit.One : Bit.Zero }
+}
+
+private func bits2token(bits: [Bit]) -> UInt16 {
+  assert(bits.count == 16)
+  var token = 0 as UInt16
+  for bit in bits {
+    if bit == .One {
+      token &= 1
+    }
+    token <<= 1
+  }
+  return token
+}
