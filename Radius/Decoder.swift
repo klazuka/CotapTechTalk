@@ -18,12 +18,16 @@ private let toneBins = startBin.stride(to: lastBin, by: binStride)
 typealias FloatBuffer = UnsafeMutablePointer<Float>
 
 func doTest() {
+  // consistent random seed for predictable noise test results
+  srand48(42);
+  
   let setup = vDSP_DFT_zrop_CreateSetup(nil, vDSP_Length(fftLength), .FORWARD)
   
   // generate a test signal
   let inputSamples = FloatBuffer.alloc(fftLength)
   vDSP_vclr(inputSamples, 1, vDSP_Length(fftLength)) // clear to zero
   encode(Token(value: 0b0110011001100110), buffer: inputSamples, numSamples: fftLength)
+  addNoise(5.85, buffer: inputSamples, numSamples: fftLength) // TODO remove this testing impediment
   
   // de-interleave to get the audio input into the format that vDSP wants
   let evenSamples = FloatBuffer.alloc(fftLength/2)
@@ -85,6 +89,17 @@ private func printFrequencyAnalysis(magnitudes: FloatBuffer, numMagnitudes: Int)
     let freq = bin2hertz(i)
     let magnitude = magnitudes[i]
     print(String(format: "%4d %5.0f %.0f", i, freq, magnitude))
+  }
+}
+
+private func addNoise(noise: Float, buffer: FloatBuffer, numSamples: Int) {
+  
+  for i in 0..<numSamples {
+    let normRandom = Float(drand48())         // range [0, 1]
+    let negToPosRandom = (normRandom * 2) - 1 // range of [-1, 1]
+    let r = noise * negToPosRandom            // attenuate the noise
+//    print("ratio", abs(r) / abs(buffer[i]))
+    buffer[i] += r
   }
 }
 
