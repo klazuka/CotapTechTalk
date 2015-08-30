@@ -8,12 +8,13 @@ import Accelerate
 private let sampleRate = 48_000.0 as Float
 
 func decode() {
-  let fftLength = 512
+  let fftLength = 4096
   let setup = vDSP_DFT_zrop_CreateSetup(nil, vDSP_Length(fftLength), .FORWARD)
   
-  // generate a tone signal
+  // generate a test signal
   let inputSamples = UnsafeMutablePointer<Float>.alloc(fftLength)
-  tones([440, 880], buffer: inputSamples, numSamples: fftLength)
+  vDSP_vclr(inputSamples, 1, vDSP_Length(fftLength)) // clear to zero
+  encode(0b0110011001100110, buffer: inputSamples, numSamples: fftLength)
   
   // de-interleave to get the audio input into the format that vDSP wants
   let evenSamples = UnsafeMutablePointer<Float>.alloc(fftLength/2)
@@ -56,14 +57,23 @@ private func deinterleave(input: UnsafePointer<Float>, inputLength: Int, outputL
   vDSP_ctoz(UnsafePointer<DSPComplex>(input), 2, &out, 1, vDSP_Length(inputLength/2))
 }
 
+private func encode(token: UInt16, buffer: UnsafeMutablePointer<Float>, numSamples: Int) {
 
-/// mixes a tone with frequency 'hz' into 'buffer'
-private func tones(frequencies: [Float], buffer: UnsafeMutablePointer<Float>, numSamples: Int) {
-  // clear to zero
-  vDSP_vclr(buffer, 1, vDSP_Length(numSamples))
-  // mix in each tone
-  for freq in frequencies {
-    tone(freq, buffer: buffer, numSamples: numSamples)
+  /// extract the bits in little-endian order
+  func bits(n: UInt16) -> [Bit] {
+    return
+      Array(0..<16)
+      .map { (n >> $0) & 0b1 }
+      .map { $0 == 1 ? Bit.One : Bit.Zero }
+  }
+
+  // generate a tone for each bit that is turned on
+  for (i, bit) in bits(token).enumerate() where bit == .One {
+    let baseFreq = 400
+    let freqSpacing = 100
+    let freq = baseFreq + (i * freqSpacing)
+    print("tone \(freq)")
+    tone(Float(freq), buffer: buffer, numSamples: numSamples)
   }
 }
 
