@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		53296B731B9491AC004C8366 /* SignalEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53296B721B9491AC004C8366 /* SignalEncoder.swift */; settings = {ASSET_TAGS = (); }; };
+		53296B751B94925C004C8366 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53296B741B94925C004C8366 /* Test.swift */; settings = {ASSET_TAGS = (); }; };
 		535BA1EB1B8A40D400F6F386 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA1EA1B8A40D400F6F386 /* AppDelegate.swift */; };
 		535BA1ED1B8A40D400F6F386 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA1EC1B8A40D400F6F386 /* MainVC.swift */; };
 		535BA1F21B8A40D400F6F386 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 535BA1F11B8A40D400F6F386 /* Assets.xcassets */; };
@@ -14,7 +16,7 @@
 		535BA1FD1B8A433E00F6F386 /* Transmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA1FC1B8A433E00F6F386 /* Transmitter.swift */; };
 		535BA1FF1B8A50DE00F6F386 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA1FE1B8A50DE00F6F386 /* Utility.swift */; };
 		535BA2011B8A5B0D00F6F386 /* BasicAudioTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA2001B8A5B0D00F6F386 /* BasicAudioTest.swift */; };
-		5389F0CC1B928407002F392D /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5389F0CB1B928407002F392D /* Decoder.swift */; settings = {ASSET_TAGS = (); }; };
+		5389F0CC1B928407002F392D /* SignalDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5389F0CB1B928407002F392D /* SignalDecoder.swift */; settings = {ASSET_TAGS = (); }; };
 		53CB91DD1B93919900FF1A23 /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CB91DC1B93919900FF1A23 /* Parameters.swift */; settings = {ASSET_TAGS = (); }; };
 		53CB91DF1B93BB2F00FF1A23 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CB91DE1B93BB2F00FF1A23 /* Token.swift */; settings = {ASSET_TAGS = (); }; };
 		53D3C15D1B925B4600A6C211 /* FMSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3C15C1B925B4600A6C211 /* FMSynthesizer.swift */; settings = {ASSET_TAGS = (); }; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		53296B721B9491AC004C8366 /* SignalEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalEncoder.swift; sourceTree = "<group>"; };
+		53296B741B94925C004C8366 /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		535BA1E71B8A40D400F6F386 /* Radius.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Radius.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		535BA1EA1B8A40D400F6F386 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		535BA1EC1B8A40D400F6F386 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -31,7 +35,7 @@
 		535BA1FC1B8A433E00F6F386 /* Transmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transmitter.swift; sourceTree = "<group>"; };
 		535BA1FE1B8A50DE00F6F386 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		535BA2001B8A5B0D00F6F386 /* BasicAudioTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicAudioTest.swift; sourceTree = "<group>"; };
-		5389F0CB1B928407002F392D /* Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
+		5389F0CB1B928407002F392D /* SignalDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalDecoder.swift; sourceTree = "<group>"; };
 		53CB91DC1B93919900FF1A23 /* Parameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parameters.swift; sourceTree = "<group>"; };
 		53CB91DE1B93BB2F00FF1A23 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		53D3C15C1B925B4600A6C211 /* FMSynthesizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMSynthesizer.swift; sourceTree = "<group>"; };
@@ -74,7 +78,9 @@
 				535BA1FC1B8A433E00F6F386 /* Transmitter.swift */,
 				53D3C15F1B927ADD00A6C211 /* Receiver.swift */,
 				53CB91DE1B93BB2F00FF1A23 /* Token.swift */,
-				5389F0CB1B928407002F392D /* Decoder.swift */,
+				53296B741B94925C004C8366 /* Test.swift */,
+				53296B721B9491AC004C8366 /* SignalEncoder.swift */,
+				5389F0CB1B928407002F392D /* SignalDecoder.swift */,
 				53CB91DC1B93919900FF1A23 /* Parameters.swift */,
 				535BA2001B8A5B0D00F6F386 /* BasicAudioTest.swift */,
 				535BA1FE1B8A50DE00F6F386 /* Utility.swift */,
@@ -160,8 +166,10 @@
 				535BA1ED1B8A40D400F6F386 /* MainVC.swift in Sources */,
 				535BA1FD1B8A433E00F6F386 /* Transmitter.swift in Sources */,
 				535BA1EB1B8A40D400F6F386 /* AppDelegate.swift in Sources */,
+				53296B731B9491AC004C8366 /* SignalEncoder.swift in Sources */,
 				535BA2011B8A5B0D00F6F386 /* BasicAudioTest.swift in Sources */,
-				5389F0CC1B928407002F392D /* Decoder.swift in Sources */,
+				53296B751B94925C004C8366 /* Test.swift in Sources */,
+				5389F0CC1B928407002F392D /* SignalDecoder.swift in Sources */,
 				53D3C15D1B925B4600A6C211 /* FMSynthesizer.swift in Sources */,
 				53CB91DD1B93919900FF1A23 /* Parameters.swift in Sources */,
 			);
