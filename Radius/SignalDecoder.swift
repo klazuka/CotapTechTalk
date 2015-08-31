@@ -5,22 +5,10 @@
 import Foundation
 import Accelerate
 
-
-
-
-typealias FloatBuffer = UnsafeMutablePointer<Float>
-
-func doTest() {
-  // consistent random seed for predictable noise test results
-  srand48(42);
-  
+/// decode a buffer of time-domain audio samples into a Token
+/// according to the "audio barcode" protocol
+func decode(inputSamples: FloatBuffer, numSamples: Int) -> Token {
   let setup = vDSP_DFT_zrop_CreateSetup(nil, vDSP_Length(fftLength), .FORWARD)
-  
-  // generate a test signal
-  let inputSamples = FloatBuffer.alloc(fftLength)
-  vDSP_vclr(inputSamples, 1, vDSP_Length(fftLength)) // clear to zero
-  encode(Token(value: 0xabcd), buffer: inputSamples, numSamples: fftLength)
-  addNoise(10.0, buffer: inputSamples, numSamples: fftLength) // TODO remove this testing impediment
   
   // de-interleave to get the audio input into the format that vDSP wants
   let evenSamples = FloatBuffer.alloc(fftLength/2)
@@ -38,20 +26,24 @@ func doTest() {
   vDSP_zvmags(&freqComplex, 1, freqMagnitudes, 1, vDSP_Length(fftLength/2))
   
   // analyze
-//  printFrequencyAnalysis(freqMagnitudes, numMagnitudes: fftLength/2)
-  print("decoded as", decode(freqMagnitudes, numMagnitudes: fftLength/2))
+  //  printFrequencyAnalysis(freqMagnitudes, numMagnitudes: fftLength/2)
+  let token = decodeStage2(freqMagnitudes, numMagnitudes: fftLength/2)
   
   // free memory
   vDSP_DFT_DestroySetup(setup)
-  inputSamples.dealloc(fftLength)
+  
   evenSamples.dealloc(fftLength/2)
   oddSamples.dealloc(fftLength/2)
   outReal.dealloc(fftLength/2)
   outImaginary.dealloc(fftLength/2)
   freqMagnitudes.dealloc(fftLength/2)
+
+  return token
 }
 
-func decode(magnitudes: FloatBuffer, numMagnitudes: Int) -> Token {
+/// given the frequency-domain samples of the "audio barcode", attempt
+/// to decode a token.
+private func decodeStage2(magnitudes: FloatBuffer, numMagnitudes: Int) -> Token {
     
   var bits = [Bit]()
   
@@ -94,8 +86,9 @@ private func printFrequencyAnalysis(magnitudes: FloatBuffer, numMagnitudes: Int)
   }
 }
 
+/// split `input` apart into `outputLeft` and `outputRight`, where the even indices
+/// go into the left part and the odd indices go into the right part
 private func deinterleave(input: UnsafePointer<Float>, inputLength: Int, outputLeft: FloatBuffer, outputRight: FloatBuffer) {
-  
   // de-interleave the real samples by abusing vDSP's complex-number deinterleave function
   var out = DSPSplitComplex(realp: outputLeft, imagp: outputRight)
   vDSP_ctoz(UnsafePointer<DSPComplex>(input), 2, &out, 1, vDSP_Length(inputLength/2))

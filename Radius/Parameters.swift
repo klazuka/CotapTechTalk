@@ -43,3 +43,8 @@ func hertz2bin(hertz: Float) -> Int {
   let bin = (hertz / nyquist) * Float(numBins)
   return Int(round(bin))
 }
+
+// MARK:- Other
+
+/// a more concise name for the pointer to buffers of our audio data
+typealias FloatBuffer = UnsafeMutablePointer<Float>
