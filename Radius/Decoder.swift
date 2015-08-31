@@ -26,8 +26,8 @@ func doTest() {
   // generate a test signal
   let inputSamples = FloatBuffer.alloc(fftLength)
   vDSP_vclr(inputSamples, 1, vDSP_Length(fftLength)) // clear to zero
-  encode(Token(value: 0b0110011001100110), buffer: inputSamples, numSamples: fftLength)
-  addNoise(5.85, buffer: inputSamples, numSamples: fftLength) // TODO remove this testing impediment
+  encode(Token(value: 0xabcd), buffer: inputSamples, numSamples: fftLength)
+  addNoise(10.0, buffer: inputSamples, numSamples: fftLength) // TODO remove this testing impediment
   
   // de-interleave to get the audio input into the format that vDSP wants
   let evenSamples = FloatBuffer.alloc(fftLength/2)
@@ -72,10 +72,30 @@ private func encode(token: Token, buffer: FloatBuffer, numSamples: Int) {
 private func decode(magnitudes: FloatBuffer, numMagnitudes: Int) -> Token {
     
   var bits = [Bit]()
+  
+  // estimate the noise floor by using the surrounding bins, which should be devoid of signal
+  let preBins = [startBin-7, startBin-6, startBin-5]
+  let postBins = [lastBin+5, lastBin+6, lastBin+7]
+  let outsideBins = preBins + postBins
+  let outsideMagnitudes = outsideBins.map { magnitudes[$0] }
+  let noiseFloor = outsideMagnitudes.mean()
+  
+  // find the strength of the signal
+  var peak: Float = 0.0
+  for bin in toneBins {
+    peak = max(peak, magnitudes[bin])
+  }
+  
+  // set the hard-decision threshold to be above the noise floor
+  // but also not too high that it would reject weak tones
+  let threshold = 0.3 * (peak - noiseFloor)
+  print("threshold \(threshold)")
+  
+  // decide which tones are present and which are not
   for bin in toneBins {
     let magnitude = magnitudes[bin]
     print(String(format: "%4d %5.0f %.0f", bin, bin2hertz(bin), magnitude))
-    let isOn = magnitude > 200_000
+    let isOn = magnitude > threshold
     bits.append(isOn ? .One : .Zero)
   }
   
