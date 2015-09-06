@@ -7,24 +7,52 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		53296B731B9491AC004C8366 /* SignalEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53296B721B9491AC004C8366 /* SignalEncoder.swift */; settings = {ASSET_TAGS = (); }; };
+		530EA62B1B9CCE1400ED4509 /* AudioBarcodeKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 530EA62A1B9CCE1400ED4509 /* AudioBarcodeKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		530EA63D1B9CCE1400ED4509 /* AudioBarcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530EA6281B9CCE1400ED4509 /* AudioBarcodeKit.framework */; };
+		530EA63E1B9CCE1400ED4509 /* AudioBarcodeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 530EA6281B9CCE1400ED4509 /* AudioBarcodeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		530EA6461B9CCE4000ED4509 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CB91DE1B93BB2F00FF1A23 /* Token.swift */; settings = {ASSET_TAGS = (); }; };
+		530EA6471B9CCE4000ED4509 /* SignalEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53296B721B9491AC004C8366 /* SignalEncoder.swift */; settings = {ASSET_TAGS = (); }; };
+		530EA6481B9CCE4000ED4509 /* SignalDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5389F0CB1B928407002F392D /* SignalDecoder.swift */; settings = {ASSET_TAGS = (); }; };
+		530EA6491B9CCE4000ED4509 /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CB91DC1B93919900FF1A23 /* Parameters.swift */; settings = {ASSET_TAGS = (); }; };
+		530EA64A1B9CCE4000ED4509 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA1FE1B8A50DE00F6F386 /* Utility.swift */; settings = {ASSET_TAGS = (); }; };
 		53296B751B94925C004C8366 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53296B741B94925C004C8366 /* Test.swift */; settings = {ASSET_TAGS = (); }; };
 		535BA1EB1B8A40D400F6F386 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA1EA1B8A40D400F6F386 /* AppDelegate.swift */; };
 		535BA1ED1B8A40D400F6F386 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA1EC1B8A40D400F6F386 /* MainVC.swift */; };
 		535BA1F21B8A40D400F6F386 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 535BA1F11B8A40D400F6F386 /* Assets.xcassets */; };
 		535BA1F51B8A40D400F6F386 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 535BA1F31B8A40D400F6F386 /* LaunchScreen.storyboard */; };
 		535BA1FD1B8A433E00F6F386 /* Transmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA1FC1B8A433E00F6F386 /* Transmitter.swift */; };
-		535BA1FF1B8A50DE00F6F386 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA1FE1B8A50DE00F6F386 /* Utility.swift */; };
-		535BA2011B8A5B0D00F6F386 /* BasicAudioTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA2001B8A5B0D00F6F386 /* BasicAudioTest.swift */; };
-		5389F0CC1B928407002F392D /* SignalDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5389F0CB1B928407002F392D /* SignalDecoder.swift */; settings = {ASSET_TAGS = (); }; };
-		53CB91DD1B93919900FF1A23 /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CB91DC1B93919900FF1A23 /* Parameters.swift */; settings = {ASSET_TAGS = (); }; };
-		53CB91DF1B93BB2F00FF1A23 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CB91DE1B93BB2F00FF1A23 /* Token.swift */; settings = {ASSET_TAGS = (); }; };
-		53D3C15D1B925B4600A6C211 /* FMSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3C15C1B925B4600A6C211 /* FMSynthesizer.swift */; settings = {ASSET_TAGS = (); }; };
 		53D3C1601B927ADD00A6C211 /* Receiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3C15F1B927ADD00A6C211 /* Receiver.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		530EA63B1B9CCE1400ED4509 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 535BA1DF1B8A40D400F6F386 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 530EA6271B9CCE1400ED4509;
+			remoteInfo = AudioBarcodeKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		530EA6441B9CCE1400ED4509 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				530EA63E1B9CCE1400ED4509 /* AudioBarcodeKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		53296B721B9491AC004C8366 /* SignalEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalEncoder.swift; sourceTree = "<group>"; };
+		530EA6281B9CCE1400ED4509 /* AudioBarcodeKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AudioBarcodeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		530EA62A1B9CCE1400ED4509 /* AudioBarcodeKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioBarcodeKit.h; sourceTree = "<group>"; };
+		530EA62C1B9CCE1400ED4509 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		53296B721B9491AC004C8366 /* SignalEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignalEncoder.swift; path = ../Radius/SignalEncoder.swift; sourceTree = "<group>"; };
 		53296B741B94925C004C8366 /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		535BA1E71B8A40D400F6F386 /* Radius.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Radius.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		535BA1EA1B8A40D400F6F386 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -33,30 +61,51 @@
 		535BA1F41B8A40D400F6F386 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		535BA1F61B8A40D400F6F386 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		535BA1FC1B8A433E00F6F386 /* Transmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transmitter.swift; sourceTree = "<group>"; };
-		535BA1FE1B8A50DE00F6F386 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
-		535BA2001B8A5B0D00F6F386 /* BasicAudioTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicAudioTest.swift; sourceTree = "<group>"; };
-		5389F0CB1B928407002F392D /* SignalDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalDecoder.swift; sourceTree = "<group>"; };
-		53CB91DC1B93919900FF1A23 /* Parameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parameters.swift; sourceTree = "<group>"; };
-		53CB91DE1B93BB2F00FF1A23 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
-		53D3C15C1B925B4600A6C211 /* FMSynthesizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMSynthesizer.swift; sourceTree = "<group>"; };
+		535BA1FE1B8A50DE00F6F386 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utility.swift; path = ../Radius/Utility.swift; sourceTree = "<group>"; };
+		5389F0CB1B928407002F392D /* SignalDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignalDecoder.swift; path = ../Radius/SignalDecoder.swift; sourceTree = "<group>"; };
+		53CB91DC1B93919900FF1A23 /* Parameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Parameters.swift; path = ../Radius/Parameters.swift; sourceTree = "<group>"; };
+		53CB91DE1B93BB2F00FF1A23 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Token.swift; path = ../Radius/Token.swift; sourceTree = "<group>"; };
 		53D3C15F1B927ADD00A6C211 /* Receiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Receiver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		535BA1E41B8A40D400F6F386 /* Frameworks */ = {
+		530EA6241B9CCE1400ED4509 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		535BA1E41B8A40D400F6F386 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				530EA63D1B9CCE1400ED4509 /* AudioBarcodeKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		530EA6291B9CCE1400ED4509 /* AudioBarcodeKit */ = {
+			isa = PBXGroup;
+			children = (
+				530EA62A1B9CCE1400ED4509 /* AudioBarcodeKit.h */,
+				53CB91DE1B93BB2F00FF1A23 /* Token.swift */,
+				53296B721B9491AC004C8366 /* SignalEncoder.swift */,
+				5389F0CB1B928407002F392D /* SignalDecoder.swift */,
+				53CB91DC1B93919900FF1A23 /* Parameters.swift */,
+				535BA1FE1B8A50DE00F6F386 /* Utility.swift */,
+				530EA62C1B9CCE1400ED4509 /* Info.plist */,
+			);
+			path = AudioBarcodeKit;
+			sourceTree = "<group>";
+		};
 		535BA1DE1B8A40D400F6F386 = {
 			isa = PBXGroup;
 			children = (
 				535BA1E91B8A40D400F6F386 /* Radius */,
+				530EA6291B9CCE1400ED4509 /* AudioBarcodeKit */,
 				535BA1E81B8A40D400F6F386 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -65,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				535BA1E71B8A40D400F6F386 /* Radius.app */,
+				530EA6281B9CCE1400ED4509 /* AudioBarcodeKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -74,16 +124,9 @@
 			children = (
 				535BA1EA1B8A40D400F6F386 /* AppDelegate.swift */,
 				535BA1EC1B8A40D400F6F386 /* MainVC.swift */,
-				53D3C15C1B925B4600A6C211 /* FMSynthesizer.swift */,
 				535BA1FC1B8A433E00F6F386 /* Transmitter.swift */,
 				53D3C15F1B927ADD00A6C211 /* Receiver.swift */,
-				53CB91DE1B93BB2F00FF1A23 /* Token.swift */,
 				53296B741B94925C004C8366 /* Test.swift */,
-				53296B721B9491AC004C8366 /* SignalEncoder.swift */,
-				5389F0CB1B928407002F392D /* SignalDecoder.swift */,
-				53CB91DC1B93919900FF1A23 /* Parameters.swift */,
-				535BA2001B8A5B0D00F6F386 /* BasicAudioTest.swift */,
-				535BA1FE1B8A50DE00F6F386 /* Utility.swift */,
 				535BA1F11B8A40D400F6F386 /* Assets.xcassets */,
 				535BA1F31B8A40D400F6F386 /* LaunchScreen.storyboard */,
 				535BA1F61B8A40D400F6F386 /* Info.plist */,
@@ -93,7 +136,36 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		530EA6251B9CCE1400ED4509 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				530EA62B1B9CCE1400ED4509 /* AudioBarcodeKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		530EA6271B9CCE1400ED4509 /* AudioBarcodeKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 530EA6431B9CCE1400ED4509 /* Build configuration list for PBXNativeTarget "AudioBarcodeKit" */;
+			buildPhases = (
+				530EA6231B9CCE1400ED4509 /* Sources */,
+				530EA6241B9CCE1400ED4509 /* Frameworks */,
+				530EA6251B9CCE1400ED4509 /* Headers */,
+				530EA6261B9CCE1400ED4509 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AudioBarcodeKit;
+			productName = AudioBarcodeKit;
+			productReference = 530EA6281B9CCE1400ED4509 /* AudioBarcodeKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		535BA1E61B8A40D400F6F386 /* Radius */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 535BA1F91B8A40D400F6F386 /* Build configuration list for PBXNativeTarget "Radius" */;
@@ -101,10 +173,12 @@
 				535BA1E31B8A40D400F6F386 /* Sources */,
 				535BA1E41B8A40D400F6F386 /* Frameworks */,
 				535BA1E51B8A40D400F6F386 /* Resources */,
+				530EA6441B9CCE1400ED4509 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				530EA63C1B9CCE1400ED4509 /* PBXTargetDependency */,
 			);
 			name = Radius;
 			productName = Radius;
@@ -120,6 +194,9 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Microsoft;
 				TargetAttributes = {
+					530EA6271B9CCE1400ED4509 = {
+						CreatedOnToolsVersion = 7.0;
+					};
 					535BA1E61B8A40D400F6F386 = {
 						CreatedOnToolsVersion = 7.0;
 					};
@@ -139,11 +216,19 @@
 			projectRoot = "";
 			targets = (
 				535BA1E61B8A40D400F6F386 /* Radius */,
+				530EA6271B9CCE1400ED4509 /* AudioBarcodeKit */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		530EA6261B9CCE1400ED4509 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		535BA1E51B8A40D400F6F386 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -156,26 +241,39 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		530EA6231B9CCE1400ED4509 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				530EA64A1B9CCE4000ED4509 /* Utility.swift in Sources */,
+				530EA6471B9CCE4000ED4509 /* SignalEncoder.swift in Sources */,
+				530EA6461B9CCE4000ED4509 /* Token.swift in Sources */,
+				530EA6481B9CCE4000ED4509 /* SignalDecoder.swift in Sources */,
+				530EA6491B9CCE4000ED4509 /* Parameters.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		535BA1E31B8A40D400F6F386 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				535BA1FF1B8A50DE00F6F386 /* Utility.swift in Sources */,
-				53CB91DF1B93BB2F00FF1A23 /* Token.swift in Sources */,
 				53D3C1601B927ADD00A6C211 /* Receiver.swift in Sources */,
 				535BA1ED1B8A40D400F6F386 /* MainVC.swift in Sources */,
 				535BA1FD1B8A433E00F6F386 /* Transmitter.swift in Sources */,
 				535BA1EB1B8A40D400F6F386 /* AppDelegate.swift in Sources */,
-				53296B731B9491AC004C8366 /* SignalEncoder.swift in Sources */,
-				535BA2011B8A5B0D00F6F386 /* BasicAudioTest.swift in Sources */,
 				53296B751B94925C004C8366 /* Test.swift in Sources */,
-				5389F0CC1B928407002F392D /* SignalDecoder.swift in Sources */,
-				53D3C15D1B925B4600A6C211 /* FMSynthesizer.swift in Sources */,
-				53CB91DD1B93919900FF1A23 /* Parameters.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		530EA63C1B9CCE1400ED4509 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 530EA6271B9CCE1400ED4509 /* AudioBarcodeKit */;
+			targetProxy = 530EA63B1B9CCE1400ED4509 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		535BA1F31B8A40D400F6F386 /* LaunchScreen.storyboard */ = {
@@ -189,6 +287,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		530EA63F1B9CCE1400ED4509 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = AudioBarcodeKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.circle38.AudioBarcodeKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		530EA6401B9CCE1400ED4509 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = AudioBarcodeKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.circle38.AudioBarcodeKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		535BA1F71B8A40D400F6F386 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -276,6 +412,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Radius/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.circle38.RadiusDemo;
@@ -287,6 +424,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Radius/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.circle38.RadiusDemo;
@@ -297,6 +435,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		530EA6431B9CCE1400ED4509 /* Build configuration list for PBXNativeTarget "AudioBarcodeKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				530EA63F1B9CCE1400ED4509 /* Debug */,
+				530EA6401B9CCE1400ED4509 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		535BA1E21B8A40D400F6F386 /* Build configuration list for PBXProject "Radius" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

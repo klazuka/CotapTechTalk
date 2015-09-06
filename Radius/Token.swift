@@ -5,18 +5,18 @@
 import Foundation
 
 /// A tiny value that can be easily transferred acoustically between devices.
-struct Token {
-  private let value: UInt16
+public struct Token {
+  public let value: UInt16
   
-  static let numBits = 16
+  public static let numBits = 16
   
   /// create a token from an unsigned 16-bit quantity
-  init(value: UInt16) {
+  public init(value: UInt16) {
     self.value = value
   }
   
   /// create a token from 16 bits with the most-significant-bit first
-  init(bigEndianBits bits: [Bit]) {
+  public init(bigEndianBits bits: [Bit]) {
     precondition(bits.count == 16)
     var tempValue = 0
     for (position, bit) in bits.reverse().enumerate() {
@@ -37,7 +37,7 @@ struct Token {
 }
 
 extension Token: CustomStringConvertible {
-  var description: String {
+  public var description: String {
     return String(format: "0x%x", self.value)
   }
 }

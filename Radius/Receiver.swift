@@ -4,6 +4,7 @@
 
 import Foundation
 import AVFoundation
+import AudioBarcodeKit
 
 class Receiver {
   let engine: AVAudioEngine
