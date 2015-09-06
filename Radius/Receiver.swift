@@ -7,7 +7,8 @@ import AVFoundation
 import AudioBarcodeKit
 
 class Receiver {
-  let engine: AVAudioEngine
+  private let engine: AVAudioEngine
+  var onTokenReceivedHandler: (Token -> Void)?
   
   init() {
     self.engine = AVAudioEngine()
@@ -35,8 +36,10 @@ class Receiver {
       accumulatorTail += numToCopy
       
       if accumulatorTail - accumulatorHead == fftLength {
-        if let token = decode(accumulatorHead, numSamples: fftLength) {
+        if let token = decode(accumulatorHead, numSamples: fftLength),
+           let handler = self.onTokenReceivedHandler {
           print("got token", token)
+          handler(token)
         }
 //        print("resetting accumulator")
         bzero(accumulatorHead, fftLength * sizeof(Float))
@@ -54,4 +57,10 @@ class Receiver {
 
   }
   
+  func stop() {
+    if let inputNode = engine.inputNode {
+      inputNode.removeTapOnBus(0)
+    }
+    engine.stop()
+  }
 }

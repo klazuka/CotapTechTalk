@@ -30,7 +30,7 @@ class TokenButton: ThemeButton {
   
   init(title: String) {
     super.init(frame: .zero)
-    applyThemedState(.Normal,   title: title, fgColor: Colors.dark, bgColor: Colors.lightest)
+    applyThemedState(.Normal,   title: title, fgColor: Colors.dark,  bgColor: Colors.lightest)
     applyThemedState(.Selected, title: title, fgColor: Colors.light, bgColor: Colors.darkest)
   }
 }
@@ -38,10 +38,11 @@ class TokenButton: ThemeButton {
 class PlayPauseButton: ThemeButton {
   required init?(coder aDecoder: NSCoder) { fatalError("not implemented") }
   
-  init() {
+  init(var playTitle: String) {
     super.init(frame: .zero)
-    applyThemedState(.Normal,   title: "Play", fgColor: Colors.light, bgColor: Colors.darkest)
-    applyThemedState(.Selected, title: "Stop", fgColor: Colors.darkest, bgColor: Colors.light)
+    playTitle = playTitle.uppercaseString
+    applyThemedState(.Normal,   title: playTitle, fgColor: Colors.light,   bgColor: Colors.darkest)
+    applyThemedState(.Selected, title: "STOP",    fgColor: Colors.darkest, bgColor: Colors.light)
   }
 }
 

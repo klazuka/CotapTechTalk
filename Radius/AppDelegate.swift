@@ -13,7 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     window = UIWindow(frame: UIScreen.mainScreen().bounds)
     
-    let vc = TransmitterViewController()
+//    let vc = TransmitViewController()
+    let vc = ReceiveViewController()
     window?.rootViewController = vc
     window?.makeKeyAndVisible()
 

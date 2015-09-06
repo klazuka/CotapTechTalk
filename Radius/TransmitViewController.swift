@@ -6,7 +6,7 @@ import UIKit
 import AudioBarcodeKit
 
 
-class TransmitterViewController: UIViewController {
+class TransmitViewController: UIViewController {
   
   static var tokens = [0x1234, 0xabcd, 0x7777, 0xaaaa].map(Token.init)
   var tokenButtons = [UIButton]() // must be same order as the tokens
@@ -17,10 +17,6 @@ class TransmitterViewController: UIViewController {
     setupUI()
   }
   
-  override func viewDidAppear(animated: Bool) {
-    super.viewDidAppear(animated)
-  }
-  
   private func setupUI() {
     view.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
     
@@ -29,7 +25,7 @@ class TransmitterViewController: UIViewController {
     var layoutY: CGFloat = 100
     let contentWidth: CGFloat = view.bounds.size.width - (2 * layoutX)
     
-    for token in TransmitterViewController.tokens {
+    for token in TransmitViewController.tokens {
       let button = TokenButton(title: token.description)
       view.addSubview(button)
       tokenButtons.append(button)
@@ -40,7 +36,7 @@ class TransmitterViewController: UIViewController {
     }
     tokenButtons.first?.selected = true
     
-    let playPauseButton = PlayPauseButton()
+    let playPauseButton = PlayPauseButton(playTitle: "Transmit")
     playPauseButton.addTarget(self, action: "playPauseTapped:", forControlEvents: .TouchUpInside)
     playPauseButton.frame = CGRect(x: layoutX, y: layoutY + 10, width: contentWidth, height: 44)
     view.addSubview(playPauseButton)
@@ -48,7 +44,7 @@ class TransmitterViewController: UIViewController {
   
   @objc private func tokenTapped(sender: UIButton) {
     let index = tokenButtons.indexOf(sender)!
-    let token = TransmitterViewController.tokens[index]
+    let token = TransmitViewController.tokens[index]
     print("selected token", token)
     for button in tokenButtons where button !== sender {
       button.selected = false
@@ -59,10 +55,8 @@ class TransmitterViewController: UIViewController {
   
   @objc private func playPauseTapped(sender: UIButton) {
     if sender.selected {
-      print("stop")
       transmitter.stop()
     } else {
-      print("play")
       transmitter.start()
     }
     sender.selected = !sender.selected
