@@ -7,11 +7,13 @@ import AVFoundation
 import AudioBarcodeKit
 
 class Transmitter {
-  let engine: AVAudioEngine
-  let toneGen: AVAudioPlayerNode
-  let audioFormat: AVAudioFormat
+  private let engine: AVAudioEngine
+  private let toneGen: AVAudioPlayerNode
+  private let audioFormat: AVAudioFormat
+  var token: Token
   
-  init() {
+  init(token: Token) {
+    self.token = token
     self.engine = AVAudioEngine()
     self.toneGen = AVAudioPlayerNode()
     
@@ -21,6 +23,11 @@ class Transmitter {
   }
   
   func start() {
+    do {
+      try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord)
+    } catch let error as NSError {
+      print("audioSession setCategory error: \(error)")
+    }
     
     do {
       try engine.start()
@@ -35,8 +42,7 @@ class Transmitter {
     let bufferRaw = pcmBuffer.floatChannelData[0]
     let numFrames = Int(pcmBuffer.frameCapacity)
     
-    encode(Token(0x8001), buffer: bufferRaw, numSamples: numFrames)
-    
+    encode(token, buffer: bufferRaw, numSamples: numFrames)
     pcmBuffer.frameLength = AVAudioFrameCount(numFrames)
     
     toneGen.scheduleBuffer(pcmBuffer, atTime: nil, options: []) {
@@ -46,4 +52,9 @@ class Transmitter {
     toneGen.play()
   }
   
+  func stop() {
+    toneGen.stop()
+    engine.stop()
+  }
 }
+

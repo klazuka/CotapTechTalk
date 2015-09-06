@@ -23,7 +23,6 @@ class MainVC: UIViewController {
     }
     
     system.start()
-//    FMSynthesizer.start()
   }
 }
 

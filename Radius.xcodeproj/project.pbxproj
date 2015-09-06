@@ -17,6 +17,8 @@
 		530EA64A1B9CCE4000ED4509 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA1FE1B8A50DE00F6F386 /* Utility.swift */; settings = {ASSET_TAGS = (); }; };
 		530EA6541B9CDA3800ED4509 /* AudioBarcodeKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530EA6531B9CDA3800ED4509 /* AudioBarcodeKitTests.swift */; };
 		530EA6561B9CDA3800ED4509 /* AudioBarcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530EA6281B9CCE1400ED4509 /* AudioBarcodeKit.framework */; settings = {ASSET_TAGS = (); }; };
+		53343EC31B9CF2DB0071867E /* TransmitterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53343EC21B9CF2DB0071867E /* TransmitterViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		53343EC51B9CF90B0071867E /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53343EC41B9CF90B0071867E /* Theme.swift */; settings = {ASSET_TAGS = (); }; };
 		535BA1EB1B8A40D400F6F386 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA1EA1B8A40D400F6F386 /* AppDelegate.swift */; };
 		535BA1ED1B8A40D400F6F386 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA1EC1B8A40D400F6F386 /* MainVC.swift */; };
 		535BA1F21B8A40D400F6F386 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 535BA1F11B8A40D400F6F386 /* Assets.xcassets */; };
@@ -64,6 +66,8 @@
 		530EA6531B9CDA3800ED4509 /* AudioBarcodeKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioBarcodeKitTests.swift; sourceTree = "<group>"; };
 		530EA6551B9CDA3800ED4509 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53296B721B9491AC004C8366 /* SignalEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignalEncoder.swift; path = ../Radius/SignalEncoder.swift; sourceTree = "<group>"; };
+		53343EC21B9CF2DB0071867E /* TransmitterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransmitterViewController.swift; sourceTree = "<group>"; };
+		53343EC41B9CF90B0071867E /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		535BA1E71B8A40D400F6F386 /* Radius.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Radius.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		535BA1EA1B8A40D400F6F386 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		535BA1EC1B8A40D400F6F386 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 		53343EC11B9CE0340071867E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				53343EC41B9CF90B0071867E /* Theme.swift */,
 				535BA1F11B8A40D400F6F386 /* Assets.xcassets */,
 				535BA1F31B8A40D400F6F386 /* LaunchScreen.storyboard */,
 				535BA1F61B8A40D400F6F386 /* Info.plist */,
@@ -164,6 +169,7 @@
 				53343EC11B9CE0340071867E /* Supporting Files */,
 				535BA1EA1B8A40D400F6F386 /* AppDelegate.swift */,
 				535BA1EC1B8A40D400F6F386 /* MainVC.swift */,
+				53343EC21B9CF2DB0071867E /* TransmitterViewController.swift */,
 				535BA1FC1B8A433E00F6F386 /* Transmitter.swift */,
 				53D3C15F1B927ADD00A6C211 /* Receiver.swift */,
 			);
@@ -330,10 +336,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53343EC31B9CF2DB0071867E /* TransmitterViewController.swift in Sources */,
 				53D3C1601B927ADD00A6C211 /* Receiver.swift in Sources */,
 				535BA1ED1B8A40D400F6F386 /* MainVC.swift in Sources */,
 				535BA1FD1B8A433E00F6F386 /* Transmitter.swift in Sources */,
 				535BA1EB1B8A40D400F6F386 /* AppDelegate.swift in Sources */,
+				53343EC51B9CF90B0071867E /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
