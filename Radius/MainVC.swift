@@ -22,8 +22,6 @@ class MainVC: UIViewController {
       print("audioSession setCategory error: \(error)")
     }
     
-    doTest()
-    
 //    system.start()
 //    FMSynthesizer.start()
   }
