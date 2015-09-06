@@ -7,8 +7,8 @@ import AVFoundation
 
 class MainVC: UIViewController {
   
-  let system = Transmitter()
-//  let system = Receiver()
+//  let system = Transmitter()
+  let system = Receiver()
   
   override func viewDidLoad() {
     super.viewDidLoad()

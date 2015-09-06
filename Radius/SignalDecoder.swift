@@ -7,7 +7,8 @@ import Accelerate
 
 /// decode a buffer of time-domain audio samples into a Token
 /// according to the "audio barcode" protocol
-public func decode(inputSamples: FloatBuffer, numSamples: Int) -> Token {
+public func decode(inputSamples: FloatBuffer, numSamples: Int) -> Token? {
+  assert(numSamples == fftLength)
   let setup = vDSP_DFT_zrop_CreateSetup(nil, vDSP_Length(fftLength), .FORWARD)
   
   // de-interleave to get the audio input into the format that vDSP wants
@@ -43,7 +44,7 @@ public func decode(inputSamples: FloatBuffer, numSamples: Int) -> Token {
 
 /// given the frequency-domain samples of the "audio barcode", attempt
 /// to decode a token.
-private func decodeStage2(magnitudes: FloatBuffer, numMagnitudes: Int) -> Token {
+private func decodeStage2(magnitudes: FloatBuffer, numMagnitudes: Int) -> Token? {
     
   var bits = [Bit]()
   
@@ -60,6 +61,11 @@ private func decodeStage2(magnitudes: FloatBuffer, numMagnitudes: Int) -> Token 
     peak = max(peak, magnitudes[bin])
   }
   
+  // bail out early if the signal isn't strong enough
+  if peak/noiseFloor < 20.0 {
+    return nil
+  }
+  
   // set the hard-decision threshold to be above the noise floor
   // but also not too high that it would reject weak tones
   let threshold = 0.3 * (peak - noiseFloor)
@@ -68,7 +74,7 @@ private func decodeStage2(magnitudes: FloatBuffer, numMagnitudes: Int) -> Token 
   // decide which tones are present and which are not
   for bin in toneBins {
     let magnitude = magnitudes[bin]
-    print(String(format: "%4d %5.0f %.0f", bin, bin2hertz(bin), magnitude))
+//    print(String(format: "%4d %5.0f %.0f", bin, bin2hertz(bin), magnitude))
     let isOn = magnitude > threshold
     bits.append(isOn ? .One : .Zero)
   }

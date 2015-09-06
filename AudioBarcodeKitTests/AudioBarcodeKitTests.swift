@@ -13,7 +13,7 @@ class AudioBarcodeKitTests: XCTestCase {
     // consistent random seed for predictable noise test results
     srand48(42);
     
-    let testValues: [UInt16] = [0x1234, 0xabcd, 0x7777, 0xeeee]
+    let testValues: [UInt16] = [0x1234, 0xabcd, 0x7777, 0xaaaa]
     let testNoiseLevels: [Float] = [0, 1, 5, 10]
     
     for val in testValues {

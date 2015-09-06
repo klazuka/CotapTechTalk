@@ -19,23 +19,29 @@ class Receiver {
       fatalError("no input node")
     }
     
-    let desiredBufferSize = AVAudioFrameCount(10 * sampleRate)
+    let accumulatorHead = FloatBuffer.alloc(fftLength)
+    var accumulatorTail = accumulatorHead
+    
+    let desiredBufferSize = AVAudioFrameCount(1 * sampleRate) // try to grab 1 second of audio at a time
     inputNode.installTapOnBus(0, bufferSize: desiredBufferSize, format: nil) {
       pcmBuffer, time in
       
       let numFrames = Int(pcmBuffer.frameLength)
-      var numCrossings = 0
-      var previousSample = 0 as Float
-      for i in 0..<numFrames {
-        let sample = pcmBuffer.floatChannelData[0][i]
-        if sample < 0 && previousSample >= 0 {
-          numCrossings++
-        } else if sample >= 0 && previousSample < 0 {
-          numCrossings++
+      let numAccumulated = accumulatorTail - accumulatorHead
+      let numRemaining = fftLength - numAccumulated
+      let numToCopy = min(numFrames, numRemaining)
+//      print("got", numFrames, "copying", numToCopy)
+      memcpy(accumulatorTail, pcmBuffer.floatChannelData[0], numToCopy * sizeof(Float))
+      accumulatorTail += numToCopy
+      
+      if accumulatorTail - accumulatorHead == fftLength {
+        if let token = decode(accumulatorHead, numSamples: fftLength) {
+          print("got token", token)
         }
-        previousSample = sample
+//        print("resetting accumulator")
+        bzero(accumulatorHead, fftLength * sizeof(Float))
+        accumulatorTail = accumulatorHead
       }
-      print("num zero crossings", numCrossings)
     }
     
     
