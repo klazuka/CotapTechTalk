@@ -11,7 +11,7 @@ public struct Token {
   public static let numBits = 16
   
   /// create a token from an unsigned 16-bit quantity
-  public init(value: UInt16) {
+  public init(_ value: UInt16) {
     self.value = value
   }
   
@@ -34,6 +34,11 @@ public struct Token {
       .map { (self.value >> $0) & 1 }            // extract the bit at each index
       .map { $0 == 1 ? Bit.One : Bit.Zero }      // convert to [Bit]
   }
+}
+
+extension Token: Equatable {}
+public func ==(lhs: Token, rhs: Token) -> Bool {
+  return lhs.value == rhs.value
 }
 
 extension Token: CustomStringConvertible {

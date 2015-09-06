@@ -18,9 +18,9 @@ class AudioBarcodeKitTests: XCTestCase {
     
     for val in testValues {
       for noise in testNoiseLevels {
-        let inputToken = Token(value: val)
+        let inputToken = Token(val)
         if let outputToken = encodeAndDecode(inputToken, noise: noise) {
-          XCTAssertEqual(inputToken.value, outputToken.value)
+          XCTAssertEqual(inputToken, outputToken)
         } else {
           XCTFail("failed to decode token")
         }
