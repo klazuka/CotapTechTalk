@@ -128,6 +128,16 @@
 			path = AudioBarcodeKitTests;
 			sourceTree = "<group>";
 		};
+		53343EC11B9CE0340071867E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				535BA1F11B8A40D400F6F386 /* Assets.xcassets */,
+				535BA1F31B8A40D400F6F386 /* LaunchScreen.storyboard */,
+				535BA1F61B8A40D400F6F386 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		535BA1DE1B8A40D400F6F386 = {
 			isa = PBXGroup;
 			children = (
@@ -151,13 +161,11 @@
 		535BA1E91B8A40D400F6F386 /* Radius */ = {
 			isa = PBXGroup;
 			children = (
+				53343EC11B9CE0340071867E /* Supporting Files */,
 				535BA1EA1B8A40D400F6F386 /* AppDelegate.swift */,
 				535BA1EC1B8A40D400F6F386 /* MainVC.swift */,
 				535BA1FC1B8A433E00F6F386 /* Transmitter.swift */,
 				53D3C15F1B927ADD00A6C211 /* Receiver.swift */,
-				535BA1F11B8A40D400F6F386 /* Assets.xcassets */,
-				535BA1F31B8A40D400F6F386 /* LaunchScreen.storyboard */,
-				535BA1F61B8A40D400F6F386 /* Info.plist */,
 			);
 			path = Radius;
 			sourceTree = "<group>";

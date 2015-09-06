@@ -10,7 +10,6 @@ class Transmitter {
   let engine: AVAudioEngine
   let toneGen: AVAudioPlayerNode
   let audioFormat: AVAudioFormat
-  let toneHz = 440.0
   
   init() {
     self.engine = AVAudioEngine()
@@ -35,11 +34,9 @@ class Transmitter {
     
     let bufferRaw = pcmBuffer.floatChannelData[0]
     let numFrames = Int(pcmBuffer.frameCapacity)
-    let x = 2.0 * Float(M_PI) / Float(sampleRate)
-    for i in 0..<numFrames {
-      let val = sinf(Float(toneHz) * Float(i) * x)
-      bufferRaw[i] = val
-    }
+    
+    encode(Token(0x8001), buffer: bufferRaw, numSamples: numFrames)
+    
     pcmBuffer.frameLength = AVAudioFrameCount(numFrames)
     
     toneGen.scheduleBuffer(pcmBuffer, atTime: nil, options: []) {

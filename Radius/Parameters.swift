@@ -10,11 +10,12 @@ import Foundation
 // Global parameters that define the protocol between the transmitter and the receiver
 // These can be tweaked, although they are not purely independent (for instance,
 // `fftLength` determines the frequencies that can be resolved, so you may need
-// to increase/decrease `binStride` to keep the right distance between tones)
+// to increase/decrease `binStride` to keep enough space between tones)
+
 public let sampleRate: Float = 48_000.0 // a typical sample rate for audio systems
-let baseFreq: Float = 400.0      // this must be well below half of the sample rate
-public let fftLength: Int = 4096        // the higher the FFT length, the higher frequency resolution, but increases latency and increases CPU/memory usage
-let toneBinStride: Int = 4           // number of spacer bins between tones
+let baseFreq: Float = 800.0             // this must be well below half of the sample rate
+let fftLength: Int = 4096               // the higher the FFT length, the higher frequency resolution, but increases latency and increases CPU/memory usage
+let toneBinStride: Int = 4              // number of spacer bins between tones
 
 
 // MARK:- Derived Parameters (do not tweak)
