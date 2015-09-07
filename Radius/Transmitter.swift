@@ -45,7 +45,7 @@ class Transmitter {
     encode(token, buffer: bufferRaw, numSamples: numFrames)
     pcmBuffer.frameLength = AVAudioFrameCount(numFrames)
     
-    toneGen.scheduleBuffer(pcmBuffer, atTime: nil, options: []) {
+    toneGen.scheduleBuffer(pcmBuffer, atTime: nil, options: .Loops) {
       print("buffer finished playing")
     }
     

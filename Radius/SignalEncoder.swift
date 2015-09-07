@@ -13,8 +13,14 @@ public func encode(token: Token, buffer: FloatBuffer, numSamples: Int) {
   // generate a tone for each bit that is turned on
   for (i, bit) in token.bigEndianBits.enumerate() where bit == .One {
     let freq = baseFreq + (Float(i) * freqSpacing)
-//    print("set tone \(freq)")
+    print("set tone \(freq)")
     tone(Float(freq), buffer: buffer, numSamples: numSamples)
+  }
+  
+  // normalize to range [-1.0, +1.0]
+  let max = UnsafeBufferPointer(start: buffer, count: numSamples).maxElement()!
+  for i in 0..<numSamples {
+    buffer[i] /= max
   }
 }
 
