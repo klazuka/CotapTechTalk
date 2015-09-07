@@ -13,9 +13,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     window = UIWindow(frame: UIScreen.mainScreen().bounds)
     
-//    let vc = TransmitViewController()
-    let vc = ReceiveViewController()
-    window?.rootViewController = vc
+    let tabs = UITabBarController()
+    let tx = TransmitViewController()
+    tx.title = "Transmit"
+    let rx = ReceiveViewController()
+    rx.title = "Receive"
+    tabs.viewControllers = [tx, rx]
+    
+    window?.rootViewController = tabs
     window?.makeKeyAndVisible()
 
     return true

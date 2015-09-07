@@ -38,8 +38,10 @@ class Receiver {
       if accumulatorTail - accumulatorHead == fftLength {
         if let token = decode(accumulatorHead, numSamples: fftLength),
            let handler = self.onTokenReceivedHandler {
-          print("got token", token)
-          handler(token)
+          doMainThread {
+            print("got token", token)
+            handler(token)
+          }
         }
 //        print("resetting accumulator")
         bzero(accumulatorHead, fftLength * sizeof(Float))
@@ -47,6 +49,11 @@ class Receiver {
       }
     }
     
+    do {
+      try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord)
+    } catch let error as NSError {
+      print("audioSession setCategory error: \(error)")
+    }
     
     do {
       try engine.start()

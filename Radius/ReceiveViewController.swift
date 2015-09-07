@@ -29,7 +29,7 @@ class ReceiveViewController: UIViewController {
     tokenLabel.font = .boldSystemFontOfSize(40)
     tokenLabel.backgroundColor = .whiteColor()
     tokenLabel.textColor = Colors.dark
-    tokenLabel.text = "0xabcd"
+    tokenLabel.text = "------"
     tokenLabel.textAlignment = .Center
     tokenLabel.layer.borderColor = Colors.light.CGColor
     tokenLabel.layer.borderWidth = 4
@@ -46,6 +46,7 @@ class ReceiveViewController: UIViewController {
   @objc private func playPauseTapped(sender: UIButton) {
     if sender.selected {
       receiver.stop()
+      tokenLabel.text = "------"
     } else {
       receiver.start()
     }
