@@ -12,9 +12,9 @@ import Foundation
 // `fftLength` determines the frequencies that can be resolved, so you may need
 // to increase/decrease `binStride` to keep enough space between tones)
 
-public let sampleRate: Float = 44_100.0 // a typical sample rate for audio systems. In theory this could be changed, but you will probably need to do add sample rate conversion in between you and AVAudioEngine
+let sampleRate: Float = 44_100.0 // a typical sample rate for audio systems. In theory this could be changed, but you will probably need to do add sample rate conversion in between you and AVAudioEngine
 let baseFreq: Float = 843.8             // this must be well below half of the sample rate. ideally it is in the center of a bin so that most of the waveforms energy lands in this bin and not the neighboring ones
-public let fftLength: Int = 4096        // the higher the FFT length, the higher frequency resolution, but increases latency and increases CPU/memory usage
+let fftLength: Int = 4096        // the higher the FFT length, the higher frequency resolution, but increases latency and increases CPU/memory usage
 let toneBinStride: Int = 8              // number of spacer bins between tones
 
 
@@ -48,4 +48,4 @@ func hertz2bin(hertz: Float) -> Int {
 // MARK:- Other
 
 /// a more concise name for the pointer to buffers of our audio data
-public typealias FloatBuffer = UnsafeMutablePointer<Float>
+typealias FloatBuffer = UnsafeMutablePointer<Float>

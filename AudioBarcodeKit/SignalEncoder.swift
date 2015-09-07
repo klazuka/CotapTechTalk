@@ -7,7 +7,7 @@ import Foundation
 /// generates a buffer of 32-bit float audio samples where the
 /// provided `token` is encoded in the frequency domain
 /// according to the "audio barcode" protocol.
-public func encode(token: Token, buffer: FloatBuffer, numSamples: Int) {
+func encode(token: Token, buffer: FloatBuffer, numSamples: Int) {
   print("Encoding signal for Token \(token)")
   
   // generate a tone for each bit that is turned on

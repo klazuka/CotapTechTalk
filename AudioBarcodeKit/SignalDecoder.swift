@@ -7,7 +7,7 @@ import Accelerate
 
 /// decode a buffer of time-domain audio samples into a Token
 /// according to the "audio barcode" protocol
-public func decode(inputSamples: FloatBuffer, numSamples: Int) -> Token? {
+func decode(inputSamples: FloatBuffer, numSamples: Int) -> Token? {
   assert(numSamples == fftLength)
   let setup = vDSP_DFT_zrop_CreateSetup(nil, vDSP_Length(fftLength), .FORWARD)
   

@@ -4,17 +4,16 @@
 
 import Foundation
 import AVFoundation
-import AudioBarcodeKit
 
-class Receiver {
+public class Receiver {
   private let engine: AVAudioEngine
-  var onTokenReceivedHandler: (Token -> Void)?
+  public var onTokenReceivedHandler: (Token -> Void)?
   
-  init() {
+  public init() {
     self.engine = AVAudioEngine()
   }
   
-  func start() {
+  public func start() {
     
     guard let inputNode = engine.inputNode else {
       fatalError("no input node")
@@ -61,7 +60,7 @@ class Receiver {
 
   }
   
-  func stop() {
+  public func stop() {
     if let inputNode = engine.inputNode {
       inputNode.removeTapOnBus(0)
     }

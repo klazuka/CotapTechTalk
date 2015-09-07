@@ -4,15 +4,14 @@
 
 import Foundation
 import AVFoundation
-import AudioBarcodeKit
 
-class Transmitter {
+public class Transmitter {
   private let engine: AVAudioEngine
   private let toneGen: AVAudioPlayerNode
   private let audioFormat: AVAudioFormat
-  var token: Token
+  public var token: Token
   
-  init(token: Token) {
+  public init(token: Token) {
     self.token = token
     self.engine = AVAudioEngine()
     self.toneGen = AVAudioPlayerNode()
@@ -22,7 +21,7 @@ class Transmitter {
     self.engine.connect(self.toneGen, to: self.engine.outputNode, format: self.audioFormat)
   }
   
-  func start() {
+  public func start() {
     do {
       try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord)
     } catch let error as NSError {
@@ -52,7 +51,7 @@ class Transmitter {
     toneGen.play()
   }
   
-  func stop() {
+  public func stop() {
     toneGen.stop()
     engine.stop()
   }

@@ -10,7 +10,6 @@ struct Colors {
   static let dark = UIColor(white: 0.4, alpha: 1.0)
   static let darkest = UIColor(white: 0.2, alpha: 1.0)
   static let active = UIColor(hue: 0.9, saturation: 1.0, brightness: 1.0, alpha: 1.0)
-  static let passive = UIColor(hue: 0.9, saturation: 0.8, brightness: 0.8, alpha: 1.0)
 }
 
 typealias ButtonState = (title: String, fgColor: UIColor, bgColor: UIColor)
@@ -43,8 +42,9 @@ func makeTokenButton(title: String) -> UIButton {
 
 func makePlayPauseButton(var playTitle: String) -> UIButton {
   let button = ThemeButton()
+  button.titleLabel?.font = .boldSystemFontOfSize(20)
   playTitle = playTitle.uppercaseString
-  button.applyThemedState(.Normal,   title: playTitle, fgColor: Colors.lightest, bgColor: Colors.passive)
+  button.applyThemedState(.Normal,   title: playTitle, fgColor: Colors.lightest, bgColor: Colors.active)
   button.applyThemedState(.Selected, title: "STOP",    fgColor: Colors.lightest, bgColor: Colors.active)
   return button
 }

@@ -10,11 +10,6 @@
 		530EA62B1B9CCE1400ED4509 /* AudioBarcodeKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 530EA62A1B9CCE1400ED4509 /* AudioBarcodeKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		530EA63D1B9CCE1400ED4509 /* AudioBarcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530EA6281B9CCE1400ED4509 /* AudioBarcodeKit.framework */; };
 		530EA63E1B9CCE1400ED4509 /* AudioBarcodeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 530EA6281B9CCE1400ED4509 /* AudioBarcodeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		530EA6461B9CCE4000ED4509 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CB91DE1B93BB2F00FF1A23 /* Token.swift */; settings = {ASSET_TAGS = (); }; };
-		530EA6471B9CCE4000ED4509 /* SignalEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53296B721B9491AC004C8366 /* SignalEncoder.swift */; settings = {ASSET_TAGS = (); }; };
-		530EA6481B9CCE4000ED4509 /* SignalDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5389F0CB1B928407002F392D /* SignalDecoder.swift */; settings = {ASSET_TAGS = (); }; };
-		530EA6491B9CCE4000ED4509 /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CB91DC1B93919900FF1A23 /* Parameters.swift */; settings = {ASSET_TAGS = (); }; };
-		530EA64A1B9CCE4000ED4509 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA1FE1B8A50DE00F6F386 /* Utility.swift */; settings = {ASSET_TAGS = (); }; };
 		530EA6541B9CDA3800ED4509 /* AudioBarcodeKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530EA6531B9CDA3800ED4509 /* AudioBarcodeKitTests.swift */; };
 		530EA6561B9CDA3800ED4509 /* AudioBarcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530EA6281B9CCE1400ED4509 /* AudioBarcodeKit.framework */; settings = {ASSET_TAGS = (); }; };
 		53343EC31B9CF2DB0071867E /* TransmitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53343EC21B9CF2DB0071867E /* TransmitViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -23,8 +18,13 @@
 		535BA1EB1B8A40D400F6F386 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA1EA1B8A40D400F6F386 /* AppDelegate.swift */; };
 		535BA1F21B8A40D400F6F386 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 535BA1F11B8A40D400F6F386 /* Assets.xcassets */; };
 		535BA1F51B8A40D400F6F386 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 535BA1F31B8A40D400F6F386 /* LaunchScreen.storyboard */; };
-		535BA1FD1B8A433E00F6F386 /* Transmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BA1FC1B8A433E00F6F386 /* Transmitter.swift */; };
-		53D3C1601B927ADD00A6C211 /* Receiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3C15F1B927ADD00A6C211 /* Receiver.swift */; settings = {ASSET_TAGS = (); }; };
+		53AC916D1B9E195D0039B5A3 /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AC91661B9E195D0039B5A3 /* Parameters.swift */; settings = {ASSET_TAGS = (); }; };
+		53AC916E1B9E195D0039B5A3 /* Receiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AC91671B9E195D0039B5A3 /* Receiver.swift */; settings = {ASSET_TAGS = (); }; };
+		53AC916F1B9E195D0039B5A3 /* SignalDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AC91681B9E195D0039B5A3 /* SignalDecoder.swift */; settings = {ASSET_TAGS = (); }; };
+		53AC91701B9E195D0039B5A3 /* SignalEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AC91691B9E195D0039B5A3 /* SignalEncoder.swift */; settings = {ASSET_TAGS = (); }; };
+		53AC91711B9E195D0039B5A3 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AC916A1B9E195D0039B5A3 /* Token.swift */; settings = {ASSET_TAGS = (); }; };
+		53AC91721B9E195D0039B5A3 /* Transmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AC916B1B9E195D0039B5A3 /* Transmitter.swift */; settings = {ASSET_TAGS = (); }; };
+		53AC91731B9E195D0039B5A3 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AC916C1B9E195D0039B5A3 /* Utility.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +65,6 @@
 		530EA6511B9CDA3800ED4509 /* AudioBarcodeKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AudioBarcodeKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		530EA6531B9CDA3800ED4509 /* AudioBarcodeKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioBarcodeKitTests.swift; sourceTree = "<group>"; };
 		530EA6551B9CDA3800ED4509 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		53296B721B9491AC004C8366 /* SignalEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignalEncoder.swift; path = ../Radius/SignalEncoder.swift; sourceTree = "<group>"; };
 		53343EC21B9CF2DB0071867E /* TransmitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransmitViewController.swift; sourceTree = "<group>"; };
 		53343EC41B9CF90B0071867E /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		53343EC61B9D08160071867E /* ReceiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
@@ -74,12 +73,13 @@
 		535BA1F11B8A40D400F6F386 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		535BA1F41B8A40D400F6F386 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		535BA1F61B8A40D400F6F386 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		535BA1FC1B8A433E00F6F386 /* Transmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transmitter.swift; sourceTree = "<group>"; };
-		535BA1FE1B8A50DE00F6F386 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utility.swift; path = ../Radius/Utility.swift; sourceTree = "<group>"; };
-		5389F0CB1B928407002F392D /* SignalDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignalDecoder.swift; path = ../Radius/SignalDecoder.swift; sourceTree = "<group>"; };
-		53CB91DC1B93919900FF1A23 /* Parameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Parameters.swift; path = ../Radius/Parameters.swift; sourceTree = "<group>"; };
-		53CB91DE1B93BB2F00FF1A23 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Token.swift; path = ../Radius/Token.swift; sourceTree = "<group>"; };
-		53D3C15F1B927ADD00A6C211 /* Receiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Receiver.swift; sourceTree = "<group>"; };
+		53AC91661B9E195D0039B5A3 /* Parameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parameters.swift; sourceTree = "<group>"; };
+		53AC91671B9E195D0039B5A3 /* Receiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Receiver.swift; sourceTree = "<group>"; };
+		53AC91681B9E195D0039B5A3 /* SignalDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalDecoder.swift; sourceTree = "<group>"; };
+		53AC91691B9E195D0039B5A3 /* SignalEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalEncoder.swift; sourceTree = "<group>"; };
+		53AC916A1B9E195D0039B5A3 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		53AC916B1B9E195D0039B5A3 /* Transmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transmitter.swift; sourceTree = "<group>"; };
+		53AC916C1B9E195D0039B5A3 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,12 +113,14 @@
 			isa = PBXGroup;
 			children = (
 				530EA62A1B9CCE1400ED4509 /* AudioBarcodeKit.h */,
-				53CB91DE1B93BB2F00FF1A23 /* Token.swift */,
-				53296B721B9491AC004C8366 /* SignalEncoder.swift */,
-				5389F0CB1B928407002F392D /* SignalDecoder.swift */,
-				53CB91DC1B93919900FF1A23 /* Parameters.swift */,
-				535BA1FE1B8A50DE00F6F386 /* Utility.swift */,
 				530EA62C1B9CCE1400ED4509 /* Info.plist */,
+				53AC91661B9E195D0039B5A3 /* Parameters.swift */,
+				53AC91671B9E195D0039B5A3 /* Receiver.swift */,
+				53AC91681B9E195D0039B5A3 /* SignalDecoder.swift */,
+				53AC91691B9E195D0039B5A3 /* SignalEncoder.swift */,
+				53AC916A1B9E195D0039B5A3 /* Token.swift */,
+				53AC916B1B9E195D0039B5A3 /* Transmitter.swift */,
+				53AC916C1B9E195D0039B5A3 /* Utility.swift */,
 			);
 			path = AudioBarcodeKit;
 			sourceTree = "<group>";
@@ -169,9 +171,7 @@
 				53343EC11B9CE0340071867E /* Supporting Files */,
 				535BA1EA1B8A40D400F6F386 /* AppDelegate.swift */,
 				53343EC21B9CF2DB0071867E /* TransmitViewController.swift */,
-				535BA1FC1B8A433E00F6F386 /* Transmitter.swift */,
 				53343EC61B9D08160071867E /* ReceiveViewController.swift */,
-				53D3C15F1B927ADD00A6C211 /* Receiver.swift */,
 			);
 			path = Radius;
 			sourceTree = "<group>";
@@ -251,6 +251,7 @@
 		535BA1DF1B8A40D400F6F386 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Microsoft;
 				TargetAttributes = {
@@ -316,11 +317,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				530EA64A1B9CCE4000ED4509 /* Utility.swift in Sources */,
-				530EA6471B9CCE4000ED4509 /* SignalEncoder.swift in Sources */,
-				530EA6461B9CCE4000ED4509 /* Token.swift in Sources */,
-				530EA6481B9CCE4000ED4509 /* SignalDecoder.swift in Sources */,
-				530EA6491B9CCE4000ED4509 /* Parameters.swift in Sources */,
+				53AC91731B9E195D0039B5A3 /* Utility.swift in Sources */,
+				53AC91701B9E195D0039B5A3 /* SignalEncoder.swift in Sources */,
+				53AC91711B9E195D0039B5A3 /* Token.swift in Sources */,
+				53AC916E1B9E195D0039B5A3 /* Receiver.swift in Sources */,
+				53AC91721B9E195D0039B5A3 /* Transmitter.swift in Sources */,
+				53AC916D1B9E195D0039B5A3 /* Parameters.swift in Sources */,
+				53AC916F1B9E195D0039B5A3 /* SignalDecoder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,8 +340,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				53343EC31B9CF2DB0071867E /* TransmitViewController.swift in Sources */,
-				53D3C1601B927ADD00A6C211 /* Receiver.swift in Sources */,
-				535BA1FD1B8A433E00F6F386 /* Transmitter.swift in Sources */,
 				53343EC71B9D08160071867E /* ReceiveViewController.swift in Sources */,
 				535BA1EB1B8A40D400F6F386 /* AppDelegate.swift in Sources */,
 				53343EC51B9CF90B0071867E /* Theme.swift in Sources */,
@@ -375,6 +376,7 @@
 		530EA63F1B9CCE1400ED4509 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -386,6 +388,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.circle38.AudioBarcodeKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -394,6 +397,7 @@
 		530EA6401B9CCE1400ED4509 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
