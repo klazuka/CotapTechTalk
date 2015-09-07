@@ -16,9 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let tabs = UITabBarController()
     let tx = TransmitViewController()
-    tx.title = "Transmit"
+    tx.tabBarItem = UITabBarItem(title: "Transmit", image: UIImage(named: "tx_tab_icon"), selectedImage: nil)
+    
     let rx = ReceiveViewController()
-    rx.title = "Receive"
+    rx.tabBarItem = UITabBarItem(title: "Receive", image: UIImage(named: "rx_tab_icon"), selectedImage: nil)
     tabs.viewControllers = [tx, rx]
     
     window?.rootViewController = tabs
