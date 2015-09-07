@@ -26,6 +26,12 @@ public class Receiver {
     inputNode.installTapOnBus(0, bufferSize: desiredBufferSize, format: nil) {
       pcmBuffer, time in
       
+      // Collect enough audio to feed the signal decoder
+      //
+      // I'm lazy here and just try to collect enough input for 1 FFT.
+      // In production code you would want to make this nicer,
+      // the least of which would be to process all of the samples,
+      // not just the first N samples.
       let numFrames = Int(pcmBuffer.frameLength)
       let numAccumulated = accumulatorTail - accumulatorHead
       let numRemaining = fftLength - numAccumulated
@@ -33,6 +39,7 @@ public class Receiver {
       memcpy(accumulatorTail, pcmBuffer.floatChannelData[0], numToCopy * sizeof(Float))
       accumulatorTail += numToCopy
       
+      // If we have enough data, feed it into the signal decoder
       if accumulatorTail - accumulatorHead == fftLength {
         let token = decode(accumulatorHead, numSamples: fftLength)
         if let handler = self.onDecodeTokenAttempt {
@@ -53,7 +60,7 @@ public class Receiver {
     
     do {
       try engine.start()
-      print("started")
+      print("Receiver started")
     } catch let error as NSError {
       print("failed to start engine: \(error)")
     }
@@ -65,5 +72,6 @@ public class Receiver {
       inputNode.removeTapOnBus(0)
     }
     engine.stop()
+    print("Receiver stopped")
   }
 }

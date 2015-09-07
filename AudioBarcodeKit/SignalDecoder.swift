@@ -72,12 +72,11 @@ private func decodeStage2(magnitudes: FloatBuffer, numMagnitudes: Int) -> Token?
     return nil
   }
   
-  printFrequencyAnalysis(magnitudes, numMagnitudes: numMagnitudes, preBins: preBins, postBins: postBins)
+//  printFrequencyAnalysis(magnitudes, numMagnitudes: numMagnitudes, preBins: preBins, postBins: postBins)
   
   // set the hard-decision threshold to be above the noise floor
   // but also not too high that it would reject weak tones
   let threshold = (0.1 * (peak - noiseFloor)) + noiseFloor
-  print("threshold \(threshold)")
   
   // decide which tones are present and which are not
   for bin in toneBins {

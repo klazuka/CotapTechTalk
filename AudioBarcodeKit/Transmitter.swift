@@ -30,7 +30,7 @@ public class Transmitter {
     
     do {
       try engine.start()
-      print("started")
+      print("Transmitter started")
     } catch let error as NSError {
       print("failed to start engine: \(error)")
     }
@@ -54,6 +54,7 @@ public class Transmitter {
   public func stop() {
     toneGen.stop()
     engine.stop()
+    print("Transmitter stopped")
   }
 }
 

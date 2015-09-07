@@ -5,7 +5,7 @@
 import UIKit
 import AudioBarcodeKit
 
-let noTokenText = "------"
+private let noTokenText = "------"
 
 class ReceiveViewController: UIViewController {
   let receiver = Receiver()

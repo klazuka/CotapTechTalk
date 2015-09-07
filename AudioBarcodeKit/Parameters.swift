@@ -13,9 +13,9 @@ import Foundation
 // to increase/decrease `binStride` to keep enough space between tones)
 
 let sampleRate: Float = 44_100.0 // a typical sample rate for audio systems. In theory this could be changed, but you will probably need to do add sample rate conversion in between you and AVAudioEngine
-let baseFreq: Float = 843.8             // this must be well below half of the sample rate. ideally it is in the center of a bin so that most of the waveforms energy lands in this bin and not the neighboring ones
+let baseFreq: Float = 843.8      // this must be well below half of the sample rate. ideally it is in the center of a bin so that most of the waveforms energy lands in this bin and not the neighboring ones
 let fftLength: Int = 4096        // the higher the FFT length, the higher frequency resolution, but increases latency and increases CPU/memory usage
-let toneBinStride: Int = 8              // number of spacer bins between tones
+let toneBinStride: Int = 8       // number of spacer bins between tones
 
 
 // MARK:- Derived Parameters (do not tweak)
