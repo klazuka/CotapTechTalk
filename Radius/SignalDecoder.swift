@@ -11,10 +11,16 @@ public func decode(inputSamples: FloatBuffer, numSamples: Int) -> Token? {
   assert(numSamples == fftLength)
   let setup = vDSP_DFT_zrop_CreateSetup(nil, vDSP_Length(fftLength), .FORWARD)
   
+  // apply a window to the input
+  let window = FloatBuffer.alloc(fftLength)
+  let windowedSamples = FloatBuffer.alloc(fftLength)
+  vDSP_hamm_window(window, vDSP_Length(fftLength), 0)
+  vDSP_vmul(inputSamples, 1, window, 1, windowedSamples, 1, vDSP_Length(fftLength))
+  
   // de-interleave to get the audio input into the format that vDSP wants
   let evenSamples = FloatBuffer.alloc(fftLength/2)
   let oddSamples = FloatBuffer.alloc(fftLength/2)
-  deinterleave(inputSamples, inputLength: fftLength, outputLeft: evenSamples, outputRight: oddSamples)
+  deinterleave(windowedSamples, inputLength: fftLength, outputLeft: evenSamples, outputRight: oddSamples)
   
   // perform the DFT
   let outReal = FloatBuffer.alloc(fftLength/2)
@@ -61,11 +67,6 @@ private func decodeStage2(magnitudes: FloatBuffer, numMagnitudes: Int) -> Token?
     peak = max(peak, magnitudes[bin])
   }
   
-  // bail out early if the signal isn't strong enough
-  if peak/noiseFloor < 20.0 {
-    return nil
-  }
-  
   // set the hard-decision threshold to be above the noise floor
   // but also not too high that it would reject weak tones
   let threshold = 0.3 * (peak - noiseFloor)
@@ -74,7 +75,7 @@ private func decodeStage2(magnitudes: FloatBuffer, numMagnitudes: Int) -> Token?
   // decide which tones are present and which are not
   for bin in toneBins {
     let magnitude = magnitudes[bin]
-//    print(String(format: "%4d %5.0f %.0f", bin, bin2hertz(bin), magnitude))
+    print(String(format: "%4d %5.0f %.0f", bin, bin2hertz(bin), magnitude))
     let isOn = magnitude > threshold
     bits.append(isOn ? .One : .Zero)
   }
