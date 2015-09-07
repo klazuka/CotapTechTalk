@@ -20,13 +20,18 @@ class TransmitViewController: UIViewController {
   private func setupUI() {
     view.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
     
-    // vertical layout of buttons
+    // vertical layout
     let layoutX: CGFloat = 20
     var layoutY: CGFloat = 100
     let contentWidth: CGFloat = view.bounds.size.width - (2 * layoutX)
     
+    let titleLabel = makeTitleLabel("Message to Send")
+    titleLabel.frame = CGRectMake(layoutX, layoutY, contentWidth, 40)
+    view.addSubview(titleLabel)
+    layoutY += titleLabel.frame.size.height + 10
+    
     for token in TransmitViewController.tokens {
-      let button = TokenButton(title: token.description)
+      let button = makeTokenButton(token.description)
       view.addSubview(button)
       tokenButtons.append(button)
       button.tag = Int(token.value)
@@ -36,7 +41,7 @@ class TransmitViewController: UIViewController {
     }
     tokenButtons.first?.selected = true
     
-    let playPauseButton = PlayPauseButton(playTitle: "Transmit")
+    let playPauseButton = makePlayPauseButton("Transmit")
     playPauseButton.addTarget(self, action: "playPauseTapped:", forControlEvents: .TouchUpInside)
     playPauseButton.frame = CGRect(x: layoutX, y: layoutY + 10, width: contentWidth, height: 44)
     view.addSubview(playPauseButton)

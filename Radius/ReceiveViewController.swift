@@ -26,6 +26,11 @@ class ReceiveViewController: UIViewController {
     var layoutY: CGFloat = 100
     let contentWidth: CGFloat = view.bounds.size.width - (2 * layoutX)
     
+    let titleLabel = makeTitleLabel("Last Message Received")
+    titleLabel.frame = CGRectMake(layoutX, layoutY, contentWidth, 40)
+    view.addSubview(titleLabel)
+    layoutY += titleLabel.frame.size.height + 10
+    
     tokenLabel.font = .boldSystemFontOfSize(40)
     tokenLabel.backgroundColor = .whiteColor()
     tokenLabel.textColor = Colors.dark
@@ -37,7 +42,7 @@ class ReceiveViewController: UIViewController {
     view.addSubview(tokenLabel)
     layoutY += tokenLabel.frame.size.height + 20
     
-    let playPauseButton = PlayPauseButton(playTitle: "Receive")
+    let playPauseButton = makePlayPauseButton("Receive")
     playPauseButton.addTarget(self, action: "playPauseTapped:", forControlEvents: .TouchUpInside)
     playPauseButton.frame = CGRect(x: layoutX, y: layoutY + 10, width: contentWidth, height: 44)
     view.addSubview(playPauseButton)

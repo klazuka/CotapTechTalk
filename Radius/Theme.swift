@@ -6,11 +6,11 @@ import UIKit
 
 struct Colors {
   static let light = UIColor(white: 0.7, alpha: 1.0)
-  static let lighter = UIColor(white: 0.8, alpha: 1.0)
   static let lightest = UIColor(white: 0.9, alpha: 1.0)
   static let dark = UIColor(white: 0.4, alpha: 1.0)
-  static let darker = UIColor(white: 0.3, alpha: 1.0)
   static let darkest = UIColor(white: 0.2, alpha: 1.0)
+  static let active = UIColor(hue: 0.9, saturation: 1.0, brightness: 1.0, alpha: 1.0)
+  static let passive = UIColor(hue: 0.9, saturation: 0.8, brightness: 0.8, alpha: 1.0)
 }
 
 typealias ButtonState = (title: String, fgColor: UIColor, bgColor: UIColor)
@@ -25,25 +25,28 @@ class ThemeButton: UIButton {
   }
 }
 
-class TokenButton: ThemeButton {
-  required init?(coder aDecoder: NSCoder) { fatalError("not implemented") }
-  
-  init(title: String) {
-    super.init(frame: .zero)
-    applyThemedState(.Normal,   title: title, fgColor: Colors.dark,  bgColor: Colors.lightest)
-    applyThemedState(.Selected, title: title, fgColor: Colors.light, bgColor: Colors.darkest)
-  }
+func makeTitleLabel(title: String) -> UILabel {
+  let label = UILabel()
+  label.text = title
+  label.textAlignment = .Center
+  label.textColor = Colors.dark
+  label.font = .systemFontOfSize(22)
+  return label
 }
 
-class PlayPauseButton: ThemeButton {
-  required init?(coder aDecoder: NSCoder) { fatalError("not implemented") }
-  
-  init(var playTitle: String) {
-    super.init(frame: .zero)
-    playTitle = playTitle.uppercaseString
-    applyThemedState(.Normal,   title: playTitle, fgColor: Colors.light,   bgColor: Colors.darkest)
-    applyThemedState(.Selected, title: "STOP",    fgColor: Colors.darkest, bgColor: Colors.light)
-  }
+func makeTokenButton(title: String) -> UIButton {
+  let button = ThemeButton()
+  button.applyThemedState(.Normal,   title: title, fgColor: Colors.dark,  bgColor: Colors.lightest)
+  button.applyThemedState(.Selected, title: title, fgColor: Colors.light, bgColor: Colors.darkest)
+  return button
+}
+
+func makePlayPauseButton(var playTitle: String) -> UIButton {
+  let button = ThemeButton()
+  playTitle = playTitle.uppercaseString
+  button.applyThemedState(.Normal,   title: playTitle, fgColor: Colors.lightest, bgColor: Colors.passive)
+  button.applyThemedState(.Selected, title: "STOP",    fgColor: Colors.lightest, bgColor: Colors.active)
+  return button
 }
 
 private func color2image(color: UIColor) -> UIImage {
