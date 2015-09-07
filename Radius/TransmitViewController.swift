@@ -34,7 +34,6 @@ class TransmitViewController: UIViewController {
       let button = makeTokenButton(token.description)
       view.addSubview(button)
       tokenButtons.append(button)
-      button.tag = Int(token.value)
       button.addTarget(self, action: "tokenTapped:", forControlEvents: .TouchUpInside)
       button.frame = CGRect(x: layoutX, y: layoutY, width: contentWidth, height: 44)
       layoutY += button.frame.size.height + 10
@@ -50,8 +49,7 @@ class TransmitViewController: UIViewController {
   @objc private func tokenTapped(sender: UIButton) {
     let index = tokenButtons.indexOf(sender)!
     let token = TransmitViewController.tokens[index]
-    print("selected token", token)
-    for button in tokenButtons where button !== sender {
+    for button in tokenButtons {
       button.selected = false
     }
     sender.selected = true

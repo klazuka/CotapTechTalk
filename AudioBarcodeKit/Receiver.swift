@@ -7,7 +7,7 @@ import AVFoundation
 
 public class Receiver {
   private let engine: AVAudioEngine
-  public var onTokenReceivedHandler: (Token -> Void)?
+  public var onDecodeTokenAttempt: (Token? -> Void)?
   
   public init() {
     self.engine = AVAudioEngine()
@@ -34,8 +34,8 @@ public class Receiver {
       accumulatorTail += numToCopy
       
       if accumulatorTail - accumulatorHead == fftLength {
-        if let token = decode(accumulatorHead, numSamples: fftLength),
-           let handler = self.onTokenReceivedHandler {
+        let token = decode(accumulatorHead, numSamples: fftLength)
+        if let handler = self.onDecodeTokenAttempt {
           doMainThread {
             handler(token)
           }

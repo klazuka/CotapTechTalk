@@ -7,16 +7,12 @@ import XCTest
 
 class AudioBarcodeKitTests: XCTestCase {
   
-
-  
   func testSimple() {
     // consistent random seed for predictable noise test results
     srand48(42);
     
-//    let testValues: [UInt16] = [0x8000]
     let testValues: [UInt16] = [0x8001, 0x1234, 0x4444, 0x2828]
-    let testNoiseLevels: [Float] = [0, 1]
-//    let testNoiseLevels: [Float] = [0]
+    let testNoiseLevels: [Float] = [0, 1, 2]
     
     for val in testValues {
       for noise in testNoiseLevels {
