@@ -9,7 +9,6 @@ import Foundation
 /// according to the "audio barcode" protocol.
 public func encode(token: Token, buffer: FloatBuffer, numSamples: Int) {
   print("Encoding signal for Token \(token)")
-  print("bin width:", freqSpacing, "Hz")
   
   // generate a tone for each bit that is turned on
   for (i, bit) in token.bigEndianBits.enumerate() where bit == .One {

@@ -8,7 +8,7 @@ import AudioBarcodeKit
 
 class TransmitViewController: UIViewController {
   
-  static var tokens = [0x8000, 0x8001, 0x8888, 0x1234, 0x7777, 0xaaaa].map(Token.init)
+  static var tokens = [0x8001, 0x1234, 0x4444, 0x2828].map(Token.init)
   var tokenButtons = [UIButton]() // must be same order as the tokens
   let transmitter = Transmitter(token: tokens[0])
   

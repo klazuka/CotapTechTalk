@@ -31,7 +31,6 @@ class Receiver {
       let numAccumulated = accumulatorTail - accumulatorHead
       let numRemaining = fftLength - numAccumulated
       let numToCopy = min(numFrames, numRemaining)
-//      print("got", numFrames, "copying", numToCopy)
       memcpy(accumulatorTail, pcmBuffer.floatChannelData[0], numToCopy * sizeof(Float))
       accumulatorTail += numToCopy
       
@@ -39,11 +38,9 @@ class Receiver {
         if let token = decode(accumulatorHead, numSamples: fftLength),
            let handler = self.onTokenReceivedHandler {
           doMainThread {
-            print("got token", token)
             handler(token)
           }
         }
-//        print("resetting accumulator")
         bzero(accumulatorHead, fftLength * sizeof(Float))
         accumulatorTail = accumulatorHead
       }

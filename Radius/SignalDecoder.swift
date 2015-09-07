@@ -33,7 +33,6 @@ public func decode(inputSamples: FloatBuffer, numSamples: Int) -> Token? {
   vDSP_zvmags(&freqComplex, 1, freqMagnitudes, 1, vDSP_Length(fftLength/2))
   
   // analyze
-  //  printFrequencyAnalysis(freqMagnitudes, numMagnitudes: fftLength/2)
   let token = decodeStage2(freqMagnitudes, numMagnitudes: fftLength/2)
   
   // free memory
@@ -67,30 +66,27 @@ private func decodeStage2(magnitudes: FloatBuffer, numMagnitudes: Int) -> Token?
     peak = max(peak, magnitudes[bin])
   }
   
+  // bail out early if the signal isn't strong enough
+  if peak/noiseFloor < 5.0 {
+    print("weak signal")
+    return nil
+  }
+  
+  printFrequencyAnalysis(magnitudes, numMagnitudes: numMagnitudes, preBins: preBins, postBins: postBins)
+  
   // set the hard-decision threshold to be above the noise floor
   // but also not too high that it would reject weak tones
-  let threshold = 0.3 * (peak - noiseFloor)
+  let threshold = (0.1 * (peak - noiseFloor)) + noiseFloor
   print("threshold \(threshold)")
   
   // decide which tones are present and which are not
   for bin in toneBins {
     let magnitude = magnitudes[bin]
-    print(String(format: "%4d %5.0f %.0f", bin, bin2hertz(bin), magnitude))
     let isOn = magnitude > threshold
     bits.append(isOn ? .One : .Zero)
   }
   
   return Token(bigEndianBits: bits)
-}
-
-private func printFrequencyAnalysis(magnitudes: FloatBuffer, numMagnitudes: Int) {
-  print(" bin  freq magnitude")
-  print(" ---  ---- ---------")
-  for i in 0..<numMagnitudes {
-    let freq = bin2hertz(i)
-    let magnitude = magnitudes[i]
-    print(String(format: "%4d %5.0f %.0f", i, freq, magnitude))
-  }
 }
 
 /// split `input` apart into `outputLeft` and `outputRight`, where the even indices
@@ -99,4 +95,24 @@ private func deinterleave(input: UnsafePointer<Float>, inputLength: Int, outputL
   // de-interleave the real samples by abusing vDSP's complex-number deinterleave function
   var out = DSPSplitComplex(realp: outputLeft, imagp: outputRight)
   vDSP_ctoz(UnsafePointer<DSPComplex>(input), 2, &out, 1, vDSP_Length(inputLength/2))
+}
+
+private func printFrequencyAnalysis(magnitudes: FloatBuffer, numMagnitudes: Int, preBins: [Int], postBins: [Int]) {
+  print(" mode bin  freq magnitude")
+  print(" ---- ---  ---- ---------")
+  for i in 0..<numMagnitudes {
+    if i < preBins.first! || i > postBins.last! {
+      continue
+    }
+    
+    let mode: String
+    if preBins.contains(i)       { mode = "pre " }
+    else if postBins.contains(i) { mode = "post" }
+    else if toneBins.contains(i) { mode = "tone" }
+    else                         { mode = "    " }
+    
+    let freq = bin2hertz(i)
+    let magnitude = magnitudes[i]
+    print(String(format: "%@ %4d %5.0f %.0f", mode, i, freq, magnitude))
+  }
 }
